@@ -1,0 +1,14 @@
+pip install django > instala o django
+
+No terminal da pasta do projeto, digite:
+
+python -m django startproject genericFlix .
+
+
+O ponto (.) no final cria o projeto na pasta atual, sem criar subpastas extras.
+
+Isso funciona mesmo que django-admin não seja reconhecido pelo Windows.
+
+Depois, para rodar o servidor:
+
+python manage.py runserver
