@@ -12,3 +12,7 @@ Isso funciona mesmo que django-admin não seja reconhecido pelo Windows.
 Depois, para rodar o servidor:
 
 python manage.py runserver
+
+django-admin startapp > cria um app
+
+python -m django startapp filme > cria um app sem precisar de admin
