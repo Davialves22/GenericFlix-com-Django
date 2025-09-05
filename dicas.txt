@@ -16,3 +16,11 @@ python manage.py runserver
 django-admin startapp > cria um app
 
 python -m django startapp filme > cria um app sem precisar de admin
+
+migrate e o que torna o banco de dados atualizado > python manage.py migrate
+
+python manage.py makemigrations > cria a estrutura de migração
+
+sempre que fizer alguma mudança tem que rodar os dois codigos
+
+criar um super user > python manage.py createsuperuser
