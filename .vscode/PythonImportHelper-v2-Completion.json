@@ -115,6 +115,15 @@
         "documentation": {}
     },
     {
+        "label": "Filme",
+        "kind": 6,
+        "importPath": "filme.models",
+        "description": "filme.models",
+        "peekOfCode": "class Filme(models.Model):\n  tituto = models.CharField(max_length=256) #Campo de texto;\n  thumb = \n  descricao = models.TextField(max_length=1000) #Bloco de texto\n  categoria = models.\n  visualizacoes = \n  data_criacao = \n  -Thumb\n  -Descrição\n  -Categoria",
+        "detail": "filme.models",
+        "documentation": {}
+    },
+    {
         "label": "application",
         "kind": 5,
         "importPath": "genericFlix.asgi",
@@ -227,7 +236,7 @@
         "kind": 5,
         "importPath": "genericFlix.settings",
         "description": "genericFlix.settings",
-        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "LANGUAGE_CODE = 'pt-br'\nTIME_ZONE = 'America/Sao_Paulo'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
         "detail": "genericFlix.settings",
         "documentation": {}
     },
@@ -236,7 +245,7 @@
         "kind": 5,
         "importPath": "genericFlix.settings",
         "description": "genericFlix.settings",
-        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "TIME_ZONE = 'America/Sao_Paulo'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
         "detail": "genericFlix.settings",
         "documentation": {}
     },

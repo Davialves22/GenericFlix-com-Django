@@ -13,6 +13,7 @@
   - Categoria
   - quantidade de views
   - data de publicação 
+ 
   - Episodios
     - Videos
     - Titulo
