@@ -6,9 +6,9 @@ from django.utils import timezone
 
 LISTA_CATEGORIAS = (
     # (armazenar_no_bd, aparecer_pra_o_usuario),
-    ("FILMES", "Filmes"),
-    ("SERIES", "Séries"),
-    ("ANIMES", "Animes"),
+    ("TERROR", "Terror"),
+    ("SUSPENSE", "Suspense"),
+    ("COMEDIA", "Comédia"),
     ("OUTROS", "Outros"),
 )
 

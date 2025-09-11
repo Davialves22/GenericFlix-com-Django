@@ -25,6 +25,22 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -148,6 +164,15 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "filme.migrations.0002_alter_filme_categoria",
+        "description": "filme.migrations.0002_alter_filme_categoria",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('filme', '0001_initial'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='filme',\n            name='categoria',\n            field=models.CharField(choices=[('TERROR', 'Terror'), ('SUSPENSE', 'Suspense'), ('COMEDIA', 'Comédia'), ('OUTROS', 'Outros')], max_length=15),\n        ),",
+        "detail": "filme.migrations.0002_alter_filme_categoria",
+        "documentation": {}
+    },
+    {
         "label": "FilmeConfig",
         "kind": 6,
         "importPath": "filme.apps",
@@ -170,7 +195,7 @@
         "kind": 5,
         "importPath": "filme.models",
         "description": "filme.models",
-        "peekOfCode": "LISTA_CATEGORIAS = (\n    # (armazenar_no_bd, aparecer_pra_o_usuario),\n    (\"FILMES\", \"Filmes\"),\n    (\"SERIES\", \"Séries\"),\n    (\"ANIMES\", \"Animes\"),\n    (\"OUTROS\", \"Outros\"),\n)\n# criar o filme\nclass Filme(models.Model):\n    tituto = models.CharField(max_length=256)  # Campo de texto;",
+        "peekOfCode": "LISTA_CATEGORIAS = (\n    # (armazenar_no_bd, aparecer_pra_o_usuario),\n    (\"TERROR\", \"Terror\"),\n    (\"SUSPENSE\", \"Suspense\"),\n    (\"COMEDIA\", \"Comédia\"),\n    (\"OUTROS\", \"Outros\"),\n)\n# criar o filme\nclass Filme(models.Model):\n    tituto = models.CharField(max_length=256)  # Campo de texto;",
         "detail": "filme.models",
         "documentation": {}
     },
