@@ -41,6 +41,14 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -138,6 +146,22 @@
         "documentation": {}
     },
     {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "static",
+        "importPath": "django.conf.urls.static",
+        "description": "django.conf.urls.static",
+        "isExtraImport": true,
+        "detail": "django.conf.urls.static",
+        "documentation": {}
+    },
+    {
         "label": "get_wsgi_application",
         "importPath": "django.core.wsgi",
         "description": "django.core.wsgi",
@@ -173,6 +197,15 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "filme.migrations.0003_rename_tituto_filme_titulo",
+        "description": "filme.migrations.0003_rename_tituto_filme_titulo",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('filme', '0002_alter_filme_categoria'),\n    ]\n    operations = [\n        migrations.RenameField(\n            model_name='filme',\n            old_name='tituto',\n            new_name='titulo',\n        ),",
+        "detail": "filme.migrations.0003_rename_tituto_filme_titulo",
+        "documentation": {}
+    },
+    {
         "label": "FilmeConfig",
         "kind": 6,
         "importPath": "filme.apps",
@@ -186,7 +219,7 @@
         "kind": 6,
         "importPath": "filme.models",
         "description": "filme.models",
-        "peekOfCode": "class Filme(models.Model):\n    tituto = models.CharField(max_length=256)  # Campo de texto;\n    thumb = models.ImageField(upload_to='thumb_filmes') #campo de imagem;\n    descricao = models.TextField(max_length=1000)  # Bloco de texto\n    categoria = models.CharField(max_length=15, choices=LISTA_CATEGORIAS)\n    visualizacoes = models.IntegerField(default=0) \n    data_criacao = models.DateTimeField(default=timezone.now)\n# criar os episodios\n# criar o usuario",
+        "peekOfCode": "class Filme(models.Model):\n    titulo = models.CharField(max_length=256)  # Campo de texto;\n    thumb = models.ImageField(upload_to='thumb_filmes')  # campo de imagem;\n    descricao = models.TextField(max_length=1000)  # Bloco de texto\n    categoria = models.CharField(max_length=15, choices=LISTA_CATEGORIAS)\n    visualizacoes = models.IntegerField(default=0) \n    data_criacao = models.DateTimeField(default=timezone.now)\n# função padrão para formato de string\n    def __str__(self):  # vai retornar uma instancia da classe filme do proprio filme\n      return self.titulo",
         "detail": "filme.models",
         "documentation": {}
     },
@@ -195,7 +228,7 @@
         "kind": 5,
         "importPath": "filme.models",
         "description": "filme.models",
-        "peekOfCode": "LISTA_CATEGORIAS = (\n    # (armazenar_no_bd, aparecer_pra_o_usuario),\n    (\"TERROR\", \"Terror\"),\n    (\"SUSPENSE\", \"Suspense\"),\n    (\"COMEDIA\", \"Comédia\"),\n    (\"OUTROS\", \"Outros\"),\n)\n# criar o filme\nclass Filme(models.Model):\n    tituto = models.CharField(max_length=256)  # Campo de texto;",
+        "peekOfCode": "LISTA_CATEGORIAS = (\n    # (armazenar_no_bd, aparecer_pra_o_usuario),\n    (\"TERROR\", \"Terror\"),\n    (\"SUSPENSE\", \"Suspense\"),\n    (\"COMEDIA\", \"Comédia\"),\n    (\"OUTROS\", \"Outros\"),\n)\n# criar o filme\nclass Filme(models.Model):\n    titulo = models.CharField(max_length=256)  # Campo de texto;",
         "detail": "filme.models",
         "documentation": {}
     },
@@ -312,7 +345,7 @@
         "kind": 5,
         "importPath": "genericFlix.settings",
         "description": "genericFlix.settings",
-        "peekOfCode": "LANGUAGE_CODE = 'pt-br'\nTIME_ZONE = 'America/Sao_Paulo'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "LANGUAGE_CODE = 'pt-br'\nTIME_ZONE = 'America/Sao_Paulo'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / \"static\",\n]",
         "detail": "genericFlix.settings",
         "documentation": {}
     },
@@ -321,7 +354,7 @@
         "kind": 5,
         "importPath": "genericFlix.settings",
         "description": "genericFlix.settings",
-        "peekOfCode": "TIME_ZONE = 'America/Sao_Paulo'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "TIME_ZONE = 'America/Sao_Paulo'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / \"static\",\n]\nMEDIA_URL = 'media/'",
         "detail": "genericFlix.settings",
         "documentation": {}
     },
@@ -330,7 +363,7 @@
         "kind": 5,
         "importPath": "genericFlix.settings",
         "description": "genericFlix.settings",
-        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / \"static\",\n]\nMEDIA_URL = 'media/'\nMEDIA_ROOT = BASE_DIR / \"media\"",
         "detail": "genericFlix.settings",
         "documentation": {}
     },
@@ -339,7 +372,7 @@
         "kind": 5,
         "importPath": "genericFlix.settings",
         "description": "genericFlix.settings",
-        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / \"static\",\n]\nMEDIA_URL = 'media/'\nMEDIA_ROOT = BASE_DIR / \"media\"\n# Default primary key field type",
         "detail": "genericFlix.settings",
         "documentation": {}
     },
@@ -348,7 +381,34 @@
         "kind": 5,
         "importPath": "genericFlix.settings",
         "description": "genericFlix.settings",
-        "peekOfCode": "STATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "STATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / \"static\",\n]\nMEDIA_URL = 'media/'\nMEDIA_ROOT = BASE_DIR / \"media\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "detail": "genericFlix.settings",
+        "documentation": {}
+    },
+    {
+        "label": "STATICFILES_DIRS",
+        "kind": 5,
+        "importPath": "genericFlix.settings",
+        "description": "genericFlix.settings",
+        "peekOfCode": "STATICFILES_DIRS = [\n    BASE_DIR / \"static\",\n]\nMEDIA_URL = 'media/'\nMEDIA_ROOT = BASE_DIR / \"media\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "detail": "genericFlix.settings",
+        "documentation": {}
+    },
+    {
+        "label": "MEDIA_URL",
+        "kind": 5,
+        "importPath": "genericFlix.settings",
+        "description": "genericFlix.settings",
+        "peekOfCode": "MEDIA_URL = 'media/'\nMEDIA_ROOT = BASE_DIR / \"media\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "detail": "genericFlix.settings",
+        "documentation": {}
+    },
+    {
+        "label": "MEDIA_ROOT",
+        "kind": 5,
+        "importPath": "genericFlix.settings",
+        "description": "genericFlix.settings",
+        "peekOfCode": "MEDIA_ROOT = BASE_DIR / \"media\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
         "detail": "genericFlix.settings",
         "documentation": {}
     },
@@ -366,7 +426,7 @@
         "kind": 5,
         "importPath": "genericFlix.urls",
         "description": "genericFlix.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    #path('/', include('filme.urls')),\n]",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    #path('/', include('filme.urls')),\n] \nurlpatterns  += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)\nurlpatterns  += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)",
         "detail": "genericFlix.urls",
         "documentation": {}
     },
