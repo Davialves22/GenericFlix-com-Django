@@ -1,5 +1,38 @@
 [
     {
+        "label": "django.utils.timezone",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.utils.timezone",
+        "description": "django.utils.timezone",
+        "detail": "django.utils.timezone",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "admin",
         "importPath": "django.contrib",
         "description": "django.contrib",
@@ -24,11 +57,11 @@
         "documentation": {}
     },
     {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
+        "label": "timezone",
+        "importPath": "django.utils",
+        "description": "django.utils",
         "isExtraImport": true,
-        "detail": "django.db",
+        "detail": "django.utils",
         "documentation": {}
     },
     {
@@ -106,6 +139,15 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "filme.migrations.0001_initial",
+        "description": "filme.migrations.0001_initial",
+        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Filme',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n                ('tituto', models.CharField(max_length=256)),",
+        "detail": "filme.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
         "label": "FilmeConfig",
         "kind": 6,
         "importPath": "filme.apps",
@@ -119,7 +161,16 @@
         "kind": 6,
         "importPath": "filme.models",
         "description": "filme.models",
-        "peekOfCode": "class Filme(models.Model):\n  tituto = models.CharField(max_length=256) #Campo de texto;\n  thumb = \n  descricao = models.TextField(max_length=1000) #Bloco de texto\n  categoria = models.\n  visualizacoes = \n  data_criacao = \n  -Thumb\n  -Descrição\n  -Categoria",
+        "peekOfCode": "class Filme(models.Model):\n    tituto = models.CharField(max_length=256)  # Campo de texto;\n    thumb = models.ImageField(upload_to='thumb_filmes') #campo de imagem;\n    descricao = models.TextField(max_length=1000)  # Bloco de texto\n    categoria = models.CharField(max_length=15, choices=LISTA_CATEGORIAS)\n    visualizacoes = models.IntegerField(default=0) \n    data_criacao = models.DateTimeField(default=timezone.now)\n# criar os episodios\n# criar o usuario",
+        "detail": "filme.models",
+        "documentation": {}
+    },
+    {
+        "label": "LISTA_CATEGORIAS",
+        "kind": 5,
+        "importPath": "filme.models",
+        "description": "filme.models",
+        "peekOfCode": "LISTA_CATEGORIAS = (\n    # (armazenar_no_bd, aparecer_pra_o_usuario),\n    (\"FILMES\", \"Filmes\"),\n    (\"SERIES\", \"Séries\"),\n    (\"ANIMES\", \"Animes\"),\n    (\"OUTROS\", \"Outros\"),\n)\n# criar o filme\nclass Filme(models.Model):\n    tituto = models.CharField(max_length=256)  # Campo de texto;",
         "detail": "filme.models",
         "documentation": {}
     },
