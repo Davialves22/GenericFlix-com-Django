@@ -97,6 +97,38 @@
         "documentation": {}
     },
     {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "include",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "include",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
         "label": "render",
         "importPath": "django.shortcuts",
         "description": "django.shortcuts",
@@ -127,22 +159,6 @@
         "description": "pathlib",
         "isExtraImport": true,
         "detail": "pathlib",
-        "documentation": {}
-    },
-    {
-        "label": "path",
-        "importPath": "django.urls",
-        "description": "django.urls",
-        "isExtraImport": true,
-        "detail": "django.urls",
-        "documentation": {}
-    },
-    {
-        "label": "include",
-        "importPath": "django.urls",
-        "description": "django.urls",
-        "isExtraImport": true,
-        "detail": "django.urls",
         "documentation": {}
     },
     {
@@ -233,6 +249,24 @@
         "documentation": {}
     },
     {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "filme.urls",
+        "description": "filme.urls",
+        "peekOfCode": "urlpatterns = [\n    path('', homepage), #HomePage do site\n]",
+        "detail": "filme.urls",
+        "documentation": {}
+    },
+    {
+        "label": "homepage",
+        "kind": 2,
+        "importPath": "filme.views",
+        "description": "filme.views",
+        "peekOfCode": "def homepage(request): #requisição get para a homepage\n  return render(request, \"homepage.html\")",
+        "detail": "filme.views",
+        "documentation": {}
+    },
+    {
         "label": "application",
         "kind": 5,
         "importPath": "genericFlix.asgi",
@@ -300,7 +334,7 @@
         "kind": 5,
         "importPath": "genericFlix.settings",
         "description": "genericFlix.settings",
-        "peekOfCode": "ROOT_URLCONF = 'genericFlix.urls'\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',",
+        "peekOfCode": "ROOT_URLCONF = 'genericFlix.urls'\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': ['templates'],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',",
         "detail": "genericFlix.settings",
         "documentation": {}
     },
@@ -309,7 +343,7 @@
         "kind": 5,
         "importPath": "genericFlix.settings",
         "description": "genericFlix.settings",
-        "peekOfCode": "TEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',\n                'django.contrib.messages.context_processors.messages',",
+        "peekOfCode": "TEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': ['templates'],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',\n                'django.contrib.messages.context_processors.messages',",
         "detail": "genericFlix.settings",
         "documentation": {}
     },
@@ -426,7 +460,7 @@
         "kind": 5,
         "importPath": "genericFlix.urls",
         "description": "genericFlix.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    #path('/', include('filme.urls')),\n] \nurlpatterns  += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)\nurlpatterns  += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('', include('filme.urls')),\n] \nurlpatterns  += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)\nurlpatterns  += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)",
         "detail": "genericFlix.urls",
         "documentation": {}
     },
