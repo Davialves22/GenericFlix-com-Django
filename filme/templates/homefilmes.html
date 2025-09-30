@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+<!--bloco do titulo-->
+{% block titulo %}
+HomeFilmes GenericFlix
+{%  endblock %}
+
+<!--Bloco de corpo-->
+{% block content %}
+<div class="py-11 text-white">
+
+    <h1>Tela de Filmes</h1>
+
+    {%for filme in lista_filmes %}
+    <hr>
+    <!--Exibir uma imagem salva do bd-->
+    <img src="{{filme.thumb.url}}" alt="">
+    <p> {{ filme }}</p>
+    <p> {{ filme.descricao }}</p>
+    {% endfor %}
+</div>
+{% endblock %}
+
+
+

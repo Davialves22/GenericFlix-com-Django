@@ -137,6 +137,14 @@
         "documentation": {}
     },
     {
+        "label": "Filme",
+        "importPath": "filme.models",
+        "description": "filme.models",
+        "isExtraImport": true,
+        "detail": "filme.models",
+        "documentation": {}
+    },
+    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
@@ -253,7 +261,7 @@
         "kind": 5,
         "importPath": "filme.urls",
         "description": "filme.urls",
-        "peekOfCode": "urlpatterns = [\n    path('', homepage), #HomePage do site\n]",
+        "peekOfCode": "urlpatterns = [\n    path('', homepage), #HomePage do site\n    path('filmes/', homefilmes),  # HomePage do site\n]",
         "detail": "filme.urls",
         "documentation": {}
     },
@@ -262,7 +270,16 @@
         "kind": 2,
         "importPath": "filme.views",
         "description": "filme.views",
-        "peekOfCode": "def homepage(request): #requisição get para a homepage\n  return render(request, \"homepage.html\")",
+        "peekOfCode": "def homepage(request): #requisição get para a homepage\n  return render(request, \"homepage.html\")\n#url -view -html\n#cria uma lista de filmes da minha tabela do banco de dados\ndef homefilmes(request):\n    context = {}\n    lista_filmes = Filme.objects.all() #pega todos os filmes do bd\n    context['lista_filmes'] = lista_filmes\n    return render(request, \"homefilmes.html\", context)",
+        "detail": "filme.views",
+        "documentation": {}
+    },
+    {
+        "label": "homefilmes",
+        "kind": 2,
+        "importPath": "filme.views",
+        "description": "filme.views",
+        "peekOfCode": "def homefilmes(request):\n    context = {}\n    lista_filmes = Filme.objects.all() #pega todos os filmes do bd\n    context['lista_filmes'] = lista_filmes\n    return render(request, \"homefilmes.html\", context)",
         "detail": "filme.views",
         "documentation": {}
     },

@@ -3,9 +3,10 @@
 #template - a parte visual que sera exibida
 
 from django.urls import path, include
-from .views import homepage
+from .views import homepage, homefilmes
 
 #definindo url
 urlpatterns = [
     path('', homepage), #HomePage do site
+    path('filmes/', homefilmes),  # HomePage do site
 ] 
