@@ -17,10 +17,17 @@ HomeFilmes GenericFlix
     <hr>
     <!--Exibir uma imagem salva do bd-->
     <img src="{{filme.thumb.url}}" alt="">
-    <p> {{ filme }}</p>
+    <a href="{% url 'filme:detalhesfilme' filme.id %}"> <p> {{ filme.titulo }}</p> </a> <!--todos os titulos dos filmes terao uma função na qual todos serao direcionados para a tela de detalhes-->
     <p> {{ filme.descricao }}</p>
     {% endfor %}
 </div>
+
+
+
+
+
+
+
 {% endblock %}
 
 

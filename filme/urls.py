@@ -6,12 +6,14 @@ from django.urls import path, include
 from .views import Homepage, Homefilmes, Detalhesfilme
 #from .views import homepage, homefilmes
 
+app_name = 'filme'
+
 #definindo url
 urlpatterns = [
 
-    path('', Homepage.as_view()),
-    path('filmes/', Homefilmes.as_view()),
-    path('filmes/<int:pk>', Detalhesfilme.as_view()), #pk -> primary key
+    path('', Homepage.as_view(), name='homepage'),
+    path('filmes/', Homefilmes.as_view(), name='homefilmes'),
+    path('filmes/<int:pk>', Detalhesfilme.as_view(), name='detalhesfilme'), #pk -> primary key
 
     #path('', homepage), #HomePage do site
     #path('filmes/', homefilmes),  # HomePage do site

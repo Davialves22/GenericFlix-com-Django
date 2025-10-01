@@ -9,12 +9,12 @@ DetalhesFilmes GenericFlix
 
 <!--Bloco de corpo-->
 {% block content %}
-    <div class="py-10">
+    <div class="py-10" style="color: white">
         <h1>{{object.titulo}}</h1>
         <img src="{{object.thumb.url}}" alt="">
         <h2>Sinopse:</h2>
         <p> {{object}} </p>
-        <p> {{object.descricao}} </p>
+        <p > {{object.descricao}} </p>
     </div>
 
 {% endblock %}
