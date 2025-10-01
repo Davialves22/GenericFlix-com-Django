@@ -137,11 +137,19 @@
         "documentation": {}
     },
     {
-        "label": "Filme",
-        "importPath": "filme.models",
-        "description": "filme.models",
+        "label": "TemplateView",
+        "importPath": "django.views.generic",
+        "description": "django.views.generic",
         "isExtraImport": true,
-        "detail": "filme.models",
+        "detail": "django.views.generic",
+        "documentation": {}
+    },
+    {
+        "label": "ListView",
+        "importPath": "django.views.generic",
+        "description": "django.views.generic",
+        "isExtraImport": true,
+        "detail": "django.views.generic",
         "documentation": {}
     },
     {
@@ -261,25 +269,52 @@
         "kind": 5,
         "importPath": "filme.urls",
         "description": "filme.urls",
-        "peekOfCode": "urlpatterns = [\n    path('', homepage), #HomePage do site\n    path('filmes/', homefilmes),  # HomePage do site\n]",
+        "peekOfCode": "urlpatterns = [\n    path('', Homepage.as_view()),\n    path('filmes/', Homefilmes.as_view()),\n    #path('', homepage), #HomePage do site\n    #path('filmes/', homefilmes),  # HomePage do site\n]",
         "detail": "filme.urls",
         "documentation": {}
     },
     {
-        "label": "homepage",
-        "kind": 2,
+        "label": "Homepage",
+        "kind": 6,
         "importPath": "filme.views",
         "description": "filme.views",
-        "peekOfCode": "def homepage(request): #requisição get para a homepage\n  return render(request, \"homepage.html\")\n#url -view -html\n#cria uma lista de filmes da minha tabela do banco de dados\ndef homefilmes(request):\n    context = {}\n    lista_filmes = Filme.objects.all() #pega todos os filmes do bd\n    context['lista_filmes'] = lista_filmes\n    return render(request, \"homefilmes.html\", context)",
+        "peekOfCode": "class Homepage(TemplateView): #vai mostrar a view\n    template_name = 'homepage.html'\nclass Homefilmes(ListView):\n        template_name = \"homefilmes.html\"\n        model = Filme #-> object_list\n#=========================================================================#\n# Create your views here.\n#função da homepage\n#def homepage(request): #requisição get para a homepage\n#return render(request, \"homepage.html\")",
         "detail": "filme.views",
         "documentation": {}
     },
     {
-        "label": "homefilmes",
-        "kind": 2,
+        "label": "Homefilmes",
+        "kind": 6,
         "importPath": "filme.views",
         "description": "filme.views",
-        "peekOfCode": "def homefilmes(request):\n    context = {}\n    lista_filmes = Filme.objects.all() #pega todos os filmes do bd\n    context['lista_filmes'] = lista_filmes\n    return render(request, \"homefilmes.html\", context)",
+        "peekOfCode": "class Homefilmes(ListView):\n        template_name = \"homefilmes.html\"\n        model = Filme #-> object_list\n#=========================================================================#\n# Create your views here.\n#função da homepage\n#def homepage(request): #requisição get para a homepage\n#return render(request, \"homepage.html\")\n#url -view -html\n#cria uma lista de filmes da minha tabela do banco de dados",
+        "detail": "filme.views",
+        "documentation": {}
+    },
+    {
+        "label": "#context",
+        "kind": 5,
+        "importPath": "filme.views",
+        "description": "filme.views",
+        "peekOfCode": "#context = {}\n#lista_filmes = Filme.objects.all() #pega todos os filmes do bd\n#context['lista_filmes'] = lista_filmes\n#return render(request, \"homefilmes.html\", context)\n#criando uma classe para cada view",
+        "detail": "filme.views",
+        "documentation": {}
+    },
+    {
+        "label": "#lista_filmes",
+        "kind": 5,
+        "importPath": "filme.views",
+        "description": "filme.views",
+        "peekOfCode": "#lista_filmes = Filme.objects.all() #pega todos os filmes do bd\n#context['lista_filmes'] = lista_filmes\n#return render(request, \"homefilmes.html\", context)\n#criando uma classe para cada view",
+        "detail": "filme.views",
+        "documentation": {}
+    },
+    {
+        "label": "#context['lista_filmes']",
+        "kind": 5,
+        "importPath": "filme.views",
+        "description": "filme.views",
+        "peekOfCode": "#context['lista_filmes'] = lista_filmes\n#return render(request, \"homefilmes.html\", context)\n#criando uma classe para cada view",
         "detail": "filme.views",
         "documentation": {}
     },
