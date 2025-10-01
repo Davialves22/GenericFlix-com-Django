@@ -153,6 +153,14 @@
         "documentation": {}
     },
     {
+        "label": "DetailView",
+        "importPath": "django.views.generic",
+        "description": "django.views.generic",
+        "isExtraImport": true,
+        "detail": "django.views.generic",
+        "documentation": {}
+    },
+    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
@@ -269,7 +277,7 @@
         "kind": 5,
         "importPath": "filme.urls",
         "description": "filme.urls",
-        "peekOfCode": "urlpatterns = [\n    path('', Homepage.as_view()),\n    path('filmes/', Homefilmes.as_view()),\n    #path('', homepage), #HomePage do site\n    #path('filmes/', homefilmes),  # HomePage do site\n]",
+        "peekOfCode": "urlpatterns = [\n    path('', Homepage.as_view()),\n    path('filmes/', Homefilmes.as_view()),\n    path('filmes/<int:pk>', Detalhesfilme.as_view()), #pk -> primary key\n    #path('', homepage), #HomePage do site\n    #path('filmes/', homefilmes),  # HomePage do site\n]",
         "detail": "filme.urls",
         "documentation": {}
     },
@@ -278,7 +286,7 @@
         "kind": 6,
         "importPath": "filme.views",
         "description": "filme.views",
-        "peekOfCode": "class Homepage(TemplateView): #vai mostrar a view\n    template_name = 'homepage.html'\nclass Homefilmes(ListView):\n        template_name = \"homefilmes.html\"\n        model = Filme #-> object_list\n#=========================================================================#\n# Create your views here.\n#função da homepage\n#def homepage(request): #requisição get para a homepage\n#return render(request, \"homepage.html\")",
+        "peekOfCode": "class Homepage(TemplateView): #vai mostrar a view\n    template_name = 'homepage.html'\nclass Homefilmes(ListView):\n        template_name = \"homefilmes.html\"\n        model = Filme #-> object_list -> lista de itens do modelo\nclass Detalhesfilme(DetailView):\n    template_name = \"detalhesfilme.html\"\n    model = Filme # -> 1 item do modelo\n#=========================================================================#\n# Create your views here.",
         "detail": "filme.views",
         "documentation": {}
     },
@@ -287,7 +295,16 @@
         "kind": 6,
         "importPath": "filme.views",
         "description": "filme.views",
-        "peekOfCode": "class Homefilmes(ListView):\n        template_name = \"homefilmes.html\"\n        model = Filme #-> object_list\n#=========================================================================#\n# Create your views here.\n#função da homepage\n#def homepage(request): #requisição get para a homepage\n#return render(request, \"homepage.html\")\n#url -view -html\n#cria uma lista de filmes da minha tabela do banco de dados",
+        "peekOfCode": "class Homefilmes(ListView):\n        template_name = \"homefilmes.html\"\n        model = Filme #-> object_list -> lista de itens do modelo\nclass Detalhesfilme(DetailView):\n    template_name = \"detalhesfilme.html\"\n    model = Filme # -> 1 item do modelo\n#=========================================================================#\n# Create your views here.\n#função da homepage\n#def homepage(request): #requisição get para a homepage",
+        "detail": "filme.views",
+        "documentation": {}
+    },
+    {
+        "label": "Detalhesfilme",
+        "kind": 6,
+        "importPath": "filme.views",
+        "description": "filme.views",
+        "peekOfCode": "class Detalhesfilme(DetailView):\n    template_name = \"detalhesfilme.html\"\n    model = Filme # -> 1 item do modelo\n#=========================================================================#\n# Create your views here.\n#função da homepage\n#def homepage(request): #requisição get para a homepage\n#return render(request, \"homepage.html\")\n#url -view -html\n#cria uma lista de filmes da minha tabela do banco de dados",
         "detail": "filme.views",
         "documentation": {}
     },
