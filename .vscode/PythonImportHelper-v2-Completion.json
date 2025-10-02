@@ -49,11 +49,44 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
         "isExtraImport": true,
         "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "django.db.models.deletion",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.db.models.deletion",
+        "description": "django.db.models.deletion",
+        "detail": "django.db.models.deletion",
         "documentation": {}
     },
     {
@@ -246,6 +279,24 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "filme.migrations.0004_serie_alter_filme_categoria_episodio",
+        "description": "filme.migrations.0004_serie_alter_filme_categoria_episodio",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('filme', '0003_rename_tituto_filme_titulo'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Serie',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n                ('titulo', models.CharField(max_length=100)),",
+        "detail": "filme.migrations.0004_serie_alter_filme_categoria_episodio",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "filme.migrations.0005_rename_filme_episodio_serie",
+        "description": "filme.migrations.0005_rename_filme_episodio_serie",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('filme', '0004_serie_alter_filme_categoria_episodio'),\n    ]\n    operations = [\n        migrations.RenameField(\n            model_name='episodio',\n            old_name='filme',\n            new_name='serie',\n        ),",
+        "detail": "filme.migrations.0005_rename_filme_episodio_serie",
+        "documentation": {}
+    },
+    {
         "label": "FilmeConfig",
         "kind": 6,
         "importPath": "filme.apps",
@@ -255,11 +306,29 @@
         "documentation": {}
     },
     {
+        "label": "Serie",
+        "kind": 6,
+        "importPath": "filme.models",
+        "description": "filme.models",
+        "peekOfCode": "class Serie(models.Model):\n    titulo = models.CharField(max_length=100)\n    thumb = models.ImageField(upload_to=\"thumb_series\")\n    descricao = models.TextField(max_length=500)\n    categoria = models.CharField(max_length=100, choices=LISTA_CATEGORIAS)\n    visualizacoes = models.IntegerField(default=0)\n    data_criacao = models.DateTimeField(default=timezone.now)\n    def __str__(self):\n        return self.titulo\n# criar o filme",
+        "detail": "filme.models",
+        "documentation": {}
+    },
+    {
         "label": "Filme",
         "kind": 6,
         "importPath": "filme.models",
         "description": "filme.models",
-        "peekOfCode": "class Filme(models.Model):\n    titulo = models.CharField(max_length=256)  # Campo de texto;\n    thumb = models.ImageField(upload_to='thumb_filmes')  # campo de imagem;\n    descricao = models.TextField(max_length=1000)  # Bloco de texto\n    categoria = models.CharField(max_length=15, choices=LISTA_CATEGORIAS)\n    visualizacoes = models.IntegerField(default=0) \n    data_criacao = models.DateTimeField(default=timezone.now)\n# função padrão para formato de string\n    def __str__(self):  # vai retornar uma instancia da classe filme do proprio filme\n      return self.titulo",
+        "peekOfCode": "class Filme(models.Model):\n    titulo = models.CharField(max_length=256)  # Campo de texto;\n    thumb = models.ImageField(upload_to='thumb_filmes')  # campo de imagem;\n    descricao = models.TextField(max_length=1000)  # Bloco de texto\n    categoria = models.CharField(max_length=100, choices=LISTA_CATEGORIAS)\n    visualizacoes = models.IntegerField(default=0) \n    data_criacao = models.DateTimeField(default=timezone.now)\n# função padrão para formato de string\n    def __str__(self):  # vai retornar uma instancia da classe filme do proprio filme\n      return self.titulo",
+        "detail": "filme.models",
+        "documentation": {}
+    },
+    {
+        "label": "Episodio",
+        "kind": 6,
+        "importPath": "filme.models",
+        "description": "filme.models",
+        "peekOfCode": "class Episodio(models.Model):\n    serie = models.ForeignKey(\"Serie\", related_name=\"episodios\", on_delete=models.CASCADE) #chave estrangeira de filme\n    titulo = models.CharField(max_length=256)\n    video = models.URLField()\n    def __str__(self):\n        return self.serie.titulo + \" - \" + self.titulo\n# criar o usuario",
         "detail": "filme.models",
         "documentation": {}
     },
@@ -268,8 +337,17 @@
         "kind": 5,
         "importPath": "filme.models",
         "description": "filme.models",
-        "peekOfCode": "LISTA_CATEGORIAS = (\n    # (armazenar_no_bd, aparecer_pra_o_usuario),\n    (\"TERROR\", \"Terror\"),\n    (\"SUSPENSE\", \"Suspense\"),\n    (\"COMEDIA\", \"Comédia\"),\n    (\"OUTROS\", \"Outros\"),\n)\n# criar o filme\nclass Filme(models.Model):\n    titulo = models.CharField(max_length=256)  # Campo de texto;",
+        "peekOfCode": "LISTA_CATEGORIAS = (\n    # (armazenar_no_bd, aparecer_pra_o_usuario),\n    (\"TERROR\", \"Terror\"),\n    (\"SUSPENSE\", \"Suspense\"),\n    (\"COMEDIA\", \"Comédia\"),\n    (\"ROMANCE\", \"Romance\"),\n    (\"ACAO\", \"Ação\"),\n    (\"AVENTURA\", \"Aventura\"),\n    (\"FICCAO_CIENTIFICA\", \"Ficção Científica\"),\n    (\"FANTASIA\", \"Fantasia\"),",
         "detail": "filme.models",
+        "documentation": {}
+    },
+    {
+        "label": "app_name",
+        "kind": 5,
+        "importPath": "filme.urls",
+        "description": "filme.urls",
+        "peekOfCode": "app_name = 'filme'\n#definindo url\nurlpatterns = [\n    path('', Homepage.as_view(), name='homepage'),\n    path('filmes/', Homefilmes.as_view(), name='homefilmes'),\n    path('filmes/<int:pk>', Detalhesfilme.as_view(), name='detalhesfilme'), #pk -> primary key\n    #path('', homepage), #HomePage do site\n    #path('filmes/', homefilmes),  # HomePage do site\n]",
+        "detail": "filme.urls",
         "documentation": {}
     },
     {
@@ -277,7 +355,7 @@
         "kind": 5,
         "importPath": "filme.urls",
         "description": "filme.urls",
-        "peekOfCode": "urlpatterns = [\n    path('', Homepage.as_view()),\n    path('filmes/', Homefilmes.as_view()),\n    path('filmes/<int:pk>', Detalhesfilme.as_view()), #pk -> primary key\n    #path('', homepage), #HomePage do site\n    #path('filmes/', homefilmes),  # HomePage do site\n]",
+        "peekOfCode": "urlpatterns = [\n    path('', Homepage.as_view(), name='homepage'),\n    path('filmes/', Homefilmes.as_view(), name='homefilmes'),\n    path('filmes/<int:pk>', Detalhesfilme.as_view(), name='detalhesfilme'), #pk -> primary key\n    #path('', homepage), #HomePage do site\n    #path('filmes/', homefilmes),  # HomePage do site\n]",
         "detail": "filme.urls",
         "documentation": {}
     },
@@ -529,7 +607,7 @@
         "kind": 5,
         "importPath": "genericFlix.urls",
         "description": "genericFlix.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('', include('filme.urls')),\n] \nurlpatterns  += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)\nurlpatterns  += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('', include('filme.urls', namespace='filme')),\n] \nurlpatterns  += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)\nurlpatterns  += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)",
         "detail": "genericFlix.urls",
         "documentation": {}
     },
