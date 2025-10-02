@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Filme
+from .models import Serie
 from django.views.generic import TemplateView, ListView, DetailView
 
 #=========================================================================#
@@ -7,14 +7,15 @@ from django.views.generic import TemplateView, ListView, DetailView
 class Homepage(TemplateView): #vai mostrar a view
     template_name = 'homepage.html'
 
-#filmes
-class Homefilmes(ListView):
-        template_name = "homefilmes.html"
-        model = Filme #-> object_list -> lista de itens do modelo
+#series
+class Homeserie(ListView):
+        template_name = "homeseries.html"
+        model = Serie #-> object_list -> lista de itens do modelo
 
-class Detalhesfilme(DetailView):
-    template_name = "detalhesfilme.html"
-    model = Filme # -> 1 item do modelo
+class Detalhesserie(DetailView):
+        template_name = "detalhesserie.html"
+        model = Serie # -> 1 item do modelo
+
 #=========================================================================#
 # Create your views here.
 #função da homepage

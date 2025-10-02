@@ -73,6 +73,38 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -106,6 +138,22 @@
         "documentation": {}
     },
     {
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
+        "documentation": {}
+    },
+    {
         "label": "AppConfig",
         "importPath": "django.apps",
         "description": "django.apps",
@@ -119,6 +167,22 @@
         "description": "django.utils",
         "isExtraImport": true,
         "detail": "django.utils",
+        "documentation": {}
+    },
+    {
+        "label": "timezone",
+        "importPath": "django.utils",
+        "description": "django.utils",
+        "isExtraImport": true,
+        "detail": "django.utils",
+        "documentation": {}
+    },
+    {
+        "label": "TestCase",
+        "importPath": "django.test",
+        "description": "django.test",
+        "isExtraImport": true,
+        "detail": "django.test",
         "documentation": {}
     },
     {
@@ -162,11 +226,59 @@
         "documentation": {}
     },
     {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "include",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
         "label": "render",
         "importPath": "django.shortcuts",
         "description": "django.shortcuts",
         "isExtraImport": true,
         "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "TemplateView",
+        "importPath": "django.views.generic",
+        "description": "django.views.generic",
+        "isExtraImport": true,
+        "detail": "django.views.generic",
+        "documentation": {}
+    },
+    {
+        "label": "ListView",
+        "importPath": "django.views.generic",
+        "description": "django.views.generic",
+        "isExtraImport": true,
+        "detail": "django.views.generic",
+        "documentation": {}
+    },
+    {
+        "label": "DetailView",
+        "importPath": "django.views.generic",
+        "description": "django.views.generic",
+        "isExtraImport": true,
+        "detail": "django.views.generic",
         "documentation": {}
     },
     {
@@ -297,6 +409,15 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "filme.migrations.0006_delete_episodio_delete_serie",
+        "description": "filme.migrations.0006_delete_episodio_delete_serie",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('filme', '0005_rename_filme_episodio_serie'),\n    ]\n    operations = [\n        migrations.DeleteModel(\n            name='Episodio',\n        ),\n        migrations.DeleteModel(\n            name='Serie',",
+        "detail": "filme.migrations.0006_delete_episodio_delete_serie",
+        "documentation": {}
+    },
+    {
         "label": "FilmeConfig",
         "kind": 6,
         "importPath": "filme.apps",
@@ -306,29 +427,11 @@
         "documentation": {}
     },
     {
-        "label": "Serie",
-        "kind": 6,
-        "importPath": "filme.models",
-        "description": "filme.models",
-        "peekOfCode": "class Serie(models.Model):\n    titulo = models.CharField(max_length=100)\n    thumb = models.ImageField(upload_to=\"thumb_series\")\n    descricao = models.TextField(max_length=500)\n    categoria = models.CharField(max_length=100, choices=LISTA_CATEGORIAS)\n    visualizacoes = models.IntegerField(default=0)\n    data_criacao = models.DateTimeField(default=timezone.now)\n    def __str__(self):\n        return self.titulo\n# criar o filme",
-        "detail": "filme.models",
-        "documentation": {}
-    },
-    {
         "label": "Filme",
         "kind": 6,
         "importPath": "filme.models",
         "description": "filme.models",
         "peekOfCode": "class Filme(models.Model):\n    titulo = models.CharField(max_length=256)  # Campo de texto;\n    thumb = models.ImageField(upload_to='thumb_filmes')  # campo de imagem;\n    descricao = models.TextField(max_length=1000)  # Bloco de texto\n    categoria = models.CharField(max_length=100, choices=LISTA_CATEGORIAS)\n    visualizacoes = models.IntegerField(default=0) \n    data_criacao = models.DateTimeField(default=timezone.now)\n# função padrão para formato de string\n    def __str__(self):  # vai retornar uma instancia da classe filme do proprio filme\n      return self.titulo",
-        "detail": "filme.models",
-        "documentation": {}
-    },
-    {
-        "label": "Episodio",
-        "kind": 6,
-        "importPath": "filme.models",
-        "description": "filme.models",
-        "peekOfCode": "class Episodio(models.Model):\n    serie = models.ForeignKey(\"Serie\", related_name=\"episodios\", on_delete=models.CASCADE) #chave estrangeira de filme\n    titulo = models.CharField(max_length=256)\n    video = models.URLField()\n    def __str__(self):\n        return self.serie.titulo + \" - \" + self.titulo\n# criar o usuario",
         "detail": "filme.models",
         "documentation": {}
     },
@@ -346,7 +449,7 @@
         "kind": 5,
         "importPath": "filme.urls",
         "description": "filme.urls",
-        "peekOfCode": "app_name = 'filme'\n#definindo url\nurlpatterns = [\n    path('', Homepage.as_view(), name='homepage'),\n    path('filmes/', Homefilmes.as_view(), name='homefilmes'),\n    path('filmes/<int:pk>', Detalhesfilme.as_view(), name='detalhesfilme'), #pk -> primary key\n    #path('', homepage), #HomePage do site\n    #path('filmes/', homefilmes),  # HomePage do site\n]",
+        "peekOfCode": "app_name = 'filme'\n#definindo url\nurlpatterns = [\n    path('', Homepage.as_view(), name='homepage'),\n    #filmes\n    path('filmes/', Homefilmes.as_view(), name='homefilmes'),\n    path('filmes/<int:pk>', Detalhesfilme.as_view(), name='detalhesfilme'), #pk -> primary key\n    #path('', homepage), #HomePage do site\n    #path('filmes/', homefilmes),  # HomePage do site\n]",
         "detail": "filme.urls",
         "documentation": {}
     },
@@ -355,7 +458,7 @@
         "kind": 5,
         "importPath": "filme.urls",
         "description": "filme.urls",
-        "peekOfCode": "urlpatterns = [\n    path('', Homepage.as_view(), name='homepage'),\n    path('filmes/', Homefilmes.as_view(), name='homefilmes'),\n    path('filmes/<int:pk>', Detalhesfilme.as_view(), name='detalhesfilme'), #pk -> primary key\n    #path('', homepage), #HomePage do site\n    #path('filmes/', homefilmes),  # HomePage do site\n]",
+        "peekOfCode": "urlpatterns = [\n    path('', Homepage.as_view(), name='homepage'),\n    #filmes\n    path('filmes/', Homefilmes.as_view(), name='homefilmes'),\n    path('filmes/<int:pk>', Detalhesfilme.as_view(), name='detalhesfilme'), #pk -> primary key\n    #path('', homepage), #HomePage do site\n    #path('filmes/', homefilmes),  # HomePage do site\n]",
         "detail": "filme.urls",
         "documentation": {}
     },
@@ -364,7 +467,7 @@
         "kind": 6,
         "importPath": "filme.views",
         "description": "filme.views",
-        "peekOfCode": "class Homepage(TemplateView): #vai mostrar a view\n    template_name = 'homepage.html'\nclass Homefilmes(ListView):\n        template_name = \"homefilmes.html\"\n        model = Filme #-> object_list -> lista de itens do modelo\nclass Detalhesfilme(DetailView):\n    template_name = \"detalhesfilme.html\"\n    model = Filme # -> 1 item do modelo\n#=========================================================================#\n# Create your views here.",
+        "peekOfCode": "class Homepage(TemplateView): #vai mostrar a view\n    template_name = 'homepage.html'\n#filmes\nclass Homefilmes(ListView):\n        template_name = \"homefilmes.html\"\n        model = Filme #-> object_list -> lista de itens do modelo\nclass Detalhesfilme(DetailView):\n    template_name = \"detalhesfilme.html\"\n    model = Filme # -> 1 item do modelo\n#=========================================================================#",
         "detail": "filme.views",
         "documentation": {}
     },
@@ -463,7 +566,7 @@
         "kind": 5,
         "importPath": "genericFlix.settings",
         "description": "genericFlix.settings",
-        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'filme',\n]\nMIDDLEWARE = [",
+        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'filme',\n    'serie',\n]",
         "detail": "genericFlix.settings",
         "documentation": {}
     },
@@ -607,7 +710,7 @@
         "kind": 5,
         "importPath": "genericFlix.urls",
         "description": "genericFlix.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('', include('filme.urls', namespace='filme')),\n] \nurlpatterns  += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)\nurlpatterns  += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    # Filmes\n    path('', include(('filme.urls', 'filme'), namespace='filme')),\n    # Séries\n    path('series/', include(('serie.urls', 'serie'), namespace='serie')),\n] \nurlpatterns  += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)\nurlpatterns  += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)",
         "detail": "genericFlix.urls",
         "documentation": {}
     },
@@ -618,6 +721,123 @@
         "description": "genericFlix.wsgi",
         "peekOfCode": "application = get_wsgi_application()",
         "detail": "genericFlix.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "serie.migrations.0001_initial",
+        "description": "serie.migrations.0001_initial",
+        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Serie',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n                ('titulo', models.CharField(max_length=100)),",
+        "detail": "serie.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
+        "label": "SerieConfig",
+        "kind": 6,
+        "importPath": "serie.apps",
+        "description": "serie.apps",
+        "peekOfCode": "class SerieConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'serie'",
+        "detail": "serie.apps",
+        "documentation": {}
+    },
+    {
+        "label": "Serie",
+        "kind": 6,
+        "importPath": "serie.models",
+        "description": "serie.models",
+        "peekOfCode": "class Serie(models.Model):\n    titulo = models.CharField(max_length=100)\n    thumb = models.ImageField(upload_to=\"thumb_series\")\n    descricao = models.TextField(max_length=500)\n    categoria = models.CharField(max_length=100, choices=LISTA_CATEGORIAS)\n    visualizacoes = models.IntegerField(default=0)\n    data_criacao = models.DateTimeField(default=timezone.now)\n    # função padrão para formato de string\n    def __str__(self):  # vai retornar uma instancia da classe filme do proprio filme\n        return self.titulo",
+        "detail": "serie.models",
+        "documentation": {}
+    },
+    {
+        "label": "Episodio",
+        "kind": 6,
+        "importPath": "serie.models",
+        "description": "serie.models",
+        "peekOfCode": "class Episodio(models.Model):\n    serie = models.ForeignKey(\"Serie\", related_name=\"episodios\", on_delete=models.CASCADE)  # chave estrangeira de filme\n    titulo = models.CharField(max_length=256)\n    video = models.URLField()\n    def __str__(self):\n        return self.serie.titulo + \" - \" + self.titulo",
+        "detail": "serie.models",
+        "documentation": {}
+    },
+    {
+        "label": "LISTA_CATEGORIAS",
+        "kind": 5,
+        "importPath": "serie.models",
+        "description": "serie.models",
+        "peekOfCode": "LISTA_CATEGORIAS = (\n    # (armazenar_no_bd, aparecer_pra_o_usuario),\n    (\"TERROR\", \"Terror\"),\n    (\"SUSPENSE\", \"Suspense\"),\n    (\"COMEDIA\", \"Comédia\"),\n    (\"ROMANCE\", \"Romance\"),\n    (\"ACAO\", \"Ação\"),\n    (\"AVENTURA\", \"Aventura\"),\n    (\"FICCAO_CIENTIFICA\", \"Ficção Científica\"),\n    (\"FANTASIA\", \"Fantasia\"),",
+        "detail": "serie.models",
+        "documentation": {}
+    },
+    {
+        "label": "app_name",
+        "kind": 5,
+        "importPath": "serie.urls",
+        "description": "serie.urls",
+        "peekOfCode": "app_name = 'serie'\n#definindo url\nurlpatterns = [\n    #series\n    path('', Homeserie.as_view(), name='homeseries'),\n    path('<int:pk>/', Detalhesserie.as_view(), name='detalhesserie'),  # pk -> primary key\n    #path('', homepage), #HomePage do site\n    #path('filmes/', homefilmes),  # HomePage do site\n]",
+        "detail": "serie.urls",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "serie.urls",
+        "description": "serie.urls",
+        "peekOfCode": "urlpatterns = [\n    #series\n    path('', Homeserie.as_view(), name='homeseries'),\n    path('<int:pk>/', Detalhesserie.as_view(), name='detalhesserie'),  # pk -> primary key\n    #path('', homepage), #HomePage do site\n    #path('filmes/', homefilmes),  # HomePage do site\n]",
+        "detail": "serie.urls",
+        "documentation": {}
+    },
+    {
+        "label": "Homepage",
+        "kind": 6,
+        "importPath": "serie.views",
+        "description": "serie.views",
+        "peekOfCode": "class Homepage(TemplateView): #vai mostrar a view\n    template_name = 'homepage.html'\n#series\nclass Homeserie(ListView):\n        template_name = \"homeseries.html\"\n        model = Serie #-> object_list -> lista de itens do modelo\nclass Detalhesserie(DetailView):\n        template_name = \"detalhesserie.html\"\n        model = Serie # -> 1 item do modelo\n#=========================================================================#",
+        "detail": "serie.views",
+        "documentation": {}
+    },
+    {
+        "label": "Homeserie",
+        "kind": 6,
+        "importPath": "serie.views",
+        "description": "serie.views",
+        "peekOfCode": "class Homeserie(ListView):\n        template_name = \"homeseries.html\"\n        model = Serie #-> object_list -> lista de itens do modelo\nclass Detalhesserie(DetailView):\n        template_name = \"detalhesserie.html\"\n        model = Serie # -> 1 item do modelo\n#=========================================================================#\n# Create your views here.\n#função da homepage\n#def homepage(request): #requisição get para a homepage",
+        "detail": "serie.views",
+        "documentation": {}
+    },
+    {
+        "label": "Detalhesserie",
+        "kind": 6,
+        "importPath": "serie.views",
+        "description": "serie.views",
+        "peekOfCode": "class Detalhesserie(DetailView):\n        template_name = \"detalhesserie.html\"\n        model = Serie # -> 1 item do modelo\n#=========================================================================#\n# Create your views here.\n#função da homepage\n#def homepage(request): #requisição get para a homepage\n#return render(request, \"homepage.html\")\n#url -view -html\n#cria uma lista de filmes da minha tabela do banco de dados",
+        "detail": "serie.views",
+        "documentation": {}
+    },
+    {
+        "label": "#context",
+        "kind": 5,
+        "importPath": "serie.views",
+        "description": "serie.views",
+        "peekOfCode": "#context = {}\n#lista_filmes = Filme.objects.all() #pega todos os filmes do bd\n#context['lista_filmes'] = lista_filmes\n#return render(request, \"homefilmes.html\", context)\n#criando uma classe para cada view",
+        "detail": "serie.views",
+        "documentation": {}
+    },
+    {
+        "label": "#lista_filmes",
+        "kind": 5,
+        "importPath": "serie.views",
+        "description": "serie.views",
+        "peekOfCode": "#lista_filmes = Filme.objects.all() #pega todos os filmes do bd\n#context['lista_filmes'] = lista_filmes\n#return render(request, \"homefilmes.html\", context)\n#criando uma classe para cada view",
+        "detail": "serie.views",
+        "documentation": {}
+    },
+    {
+        "label": "#context['lista_filmes']",
+        "kind": 5,
+        "importPath": "serie.views",
+        "description": "serie.views",
+        "peekOfCode": "#context['lista_filmes'] = lista_filmes\n#return render(request, \"homefilmes.html\", context)\n#criando uma classe para cada view",
+        "detail": "serie.views",
         "documentation": {}
     },
     {

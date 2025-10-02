@@ -3,22 +3,19 @@
 #template - a parte visual que sera exibida
 
 from django.urls import path, include
-from .views import Homepage, Homefilmes, Detalhesfilme
+from .views import Homepage, Detalhesserie, Homeserie
 
 #from .views import homepage, homefilmes
 
-app_name = 'filme'
+app_name = 'serie'
 
 #definindo url
 urlpatterns = [
 
-    path('', Homepage.as_view(), name='homepage'),
-
-    #filmes
-    path('filmes/', Homefilmes.as_view(), name='homefilmes'),
-    path('filmes/<int:pk>', Detalhesfilme.as_view(), name='detalhesfilme'), #pk -> primary key
-
+    #series
+    path('', Homeserie.as_view(), name='homeseries'),
+    path('<int:pk>/', Detalhesserie.as_view(), name='detalhesserie'),  # pk -> primary key
 
     #path('', homepage), #HomePage do site
     #path('filmes/', homefilmes),  # HomePage do site
-] 
+]

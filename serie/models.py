@@ -28,17 +28,26 @@ LISTA_CATEGORIAS = (
     ("OUTROS", "Outros"),
 )
 
-# criar o filme
-class Filme(models.Model):
-    titulo = models.CharField(max_length=256)  # Campo de texto;
-    thumb = models.ImageField(upload_to='thumb_filmes')  # campo de imagem;
-    descricao = models.TextField(max_length=1000)  # Bloco de texto
+
+# criar as series
+class Serie(models.Model):
+    titulo = models.CharField(max_length=100)
+    thumb = models.ImageField(upload_to="thumb_series")
+    descricao = models.TextField(max_length=500)
     categoria = models.CharField(max_length=100, choices=LISTA_CATEGORIAS)
-    visualizacoes = models.IntegerField(default=0) 
+    visualizacoes = models.IntegerField(default=0)
     data_criacao = models.DateTimeField(default=timezone.now)
 
-# função padrão para formato de string
+    # função padrão para formato de string
     def __str__(self):  # vai retornar uma instancia da classe filme do proprio filme
-      return self.titulo
+        return self.titulo
 
-# criar o usuario
+
+# criar os episodios
+class Episodio(models.Model):
+    serie = models.ForeignKey("Serie", related_name="episodios", on_delete=models.CASCADE)  # chave estrangeira de filme
+    titulo = models.CharField(max_length=256)
+    video = models.URLField()
+
+    def __str__(self):
+        return self.serie.titulo + " - " + self.titulo

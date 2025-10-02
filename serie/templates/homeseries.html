@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+<!--bloco do titulo-->
+{% block titulo %}
+HomeFilmes GenericFlix
+{%  endblock %}
+
+<!--Bloco de corpo-->
+{% block content %}
+<div class="py-11 text-white">
+
+    <h1>Tela de Séries</h1>
+
+    {%for serie in object_list %}
+    <hr>
+    <!--Exibir uma imagem salva do bd-->
+    <img src="{{serie.thumb.url}}" alt="">
+    <a href="{% url 'serie:detalhesserie' serie.id %}"> <p> {{ serie.titulo }}</p> </a> <!--todos os titulos dos filmes terao uma função na qual todos serao direcionados para a tela de detalhes-->
+    <p> {{ serie.descricao }}</p>
+    {% endfor %}
+</div>
+
+
+
+
+
+
+
+{% endblock %}
+
+
+
