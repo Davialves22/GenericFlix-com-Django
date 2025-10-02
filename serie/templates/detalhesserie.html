@@ -15,6 +15,26 @@ DetalhesSeries GenericFlix
         <h2>Sinopse:</h2>
         <p> {{object}} </p>
         <p > {{object.descricao}} </p>
+
+        <!--Lista de EPS-->
+        <h2>Episódios:</h2>
+        {% for episodio in object.episodios.all  %}
+        <a href="{{ episodio.video }}" target="_blank">
+            <p>Episódio {{ forloop.counter }}: {{ episodio.titulo }}</p>
+        </a>
+        {% endfor%}
+    </div>
+
+    <!--Lista de series relacionadas-->
+    <div class="py-10">
+        <h2>Relacionados: </h2>
+        {% for serie in series_relacionadas %}
+            <p>
+                <a href="{% url 'serie:detalhesserie' serie.id %} ">
+                        {{ serie.titulo }}
+                </a>
+            </p>
+        {% endfor%}
     </div>
 
 {% endblock %}
