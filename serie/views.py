@@ -16,6 +16,16 @@ class Detalhesserie(DetailView):
         template_name = "detalhesserie.html"
         model = Serie # -> 1 item do modelo
 
+        #função para contabilizar a visualização
+        def get(self,request,*args,**kwargs):
+            #descobrir qual serie o usuario ta acessando
+            serie = self.get_object()
+            # somar 1 nas visualizacoes daquela serie
+            serie.visualizacoes += 1
+            #salvar
+            serie.save()
+            return super().get(request,*args,**kwargs)#redireciona o usuario para a url final
+
         #função que ira filtrar minhas series por categoria e relacionar
         def get_context_data(self, **kwargs): #parametros para passar para a função,
             context = super(Detalhesserie, self).get_context_data(**kwargs) # classe onde ela vai herdar tudo da classe pai

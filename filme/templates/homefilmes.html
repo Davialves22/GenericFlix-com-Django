@@ -19,9 +19,10 @@ HomeFilmes GenericFlix
     <img src="{{filme.thumb.url}}" alt="">
     <a href="{% url 'filme:detalhesfilme' filme.id %}"> <p> {{ filme.titulo }}</p> </a> <!--todos os titulos dos filmes terao uma função na qual todos serao direcionados para a tela de detalhes-->
     <p> {{ filme.descricao }}</p>
+    {% endfor %}
+</div>
 
-
-     <div class="py-10">
+    <div class="py-10">
         <h1>Novos Filmes:</h1>
         {{ lista_filmes_recentes }}
     </div>
@@ -30,9 +31,6 @@ HomeFilmes GenericFlix
         <h1>Filmes em Alta:</h1>
         {{ lista_filmes_emalta }}
     </div>
-
-    {% endfor %}
-</div>
 
 
 

@@ -16,6 +16,17 @@ class Detalhesfilme(DetailView):
     template_name = "detalhesfilme.html"
     model = Filme # -> 1 item do modelo
 
+    # função para contabilizar a visualização
+    def get(self, request, *args, **kwargs):
+        # descobrir qual serie o usuario ta acessando
+        filme = self.get_object()
+        # somar 1 nas visualizacoes daquela serie
+        filme.visualizacoes += 1
+        # salvar
+        filme.save()
+
+        return super().get(request, *args, **kwargs)  # redireciona o usuario para a url final
+
     # função que ira filtrar meus filmes por categoria e relacionar
     def get_context_data(self, **kwargs):  # parametros para passar para a função,
         context = super(Detalhesfilme, self).get_context_data(**kwargs)  # classe onde ela vai herdar tudo da classe pai
