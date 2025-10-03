@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load static sass_tags %}
 
 
 <!--bloco do titulo-->
@@ -7,8 +8,205 @@
 HomeFilmes GenericFlix
 {%  endblock %}
 
+<!--bloco de estilo-->
+{% block head %}
+<style>
+    /* Adicione isso ao seu arquivo CSS ou dentro de uma tag <style> no seu base.html */
+
+/* Estiliza o container principal do carrossel */
+.carousel-container {
+    width: 100%; /* Garante que o carrossel ocupe o espaço disponível */
+}
+
+/* A "janela" do carrossel. Esconde o que estiver fora dela. */
+.carousel-viewport {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* A trilha que contém todos os cards. */
+.carousel-track {
+    /* A transição suave é aplicada aqui! */
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Cada card individual */
+.carousel-card {
+    /* Garante que o padding não afete o cálculo de 25% da largura */
+    box-sizing: border-box;
+    flex-shrink: 0;
+    width: 25%; /* Mostra 4 cards por vez */
+}
+
+/* Posicionamento e estilo dos botões */
+.carousel-prev, .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-prev {
+    left: -25px; /* Ajuste para posicionar fora da área dos cards */
+}
+
+.carousel-next {
+    right: -25px; /* Ajuste para posicionar fora da área dos cards */
+}
+
+/* Esconde o botão se ele estiver desabilitado (via JS) */
+.carousel-prev:disabled, .carousel-next:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+}
+</style>
+{%  endblock %}
+
+
 <!--Bloco de corpo-->
 {% block content %}
+
+    <main class='bg-primary_black min-h-screen w-full'>
+
+        <section class="h-screen relative bg-no-repeat pb-8 pl-6 flex items-end bg-cover" style="background-image: url('{}');">
+            <div>
+                <h2 class="text-6xl font-semibold text-white my-4">
+                    Titulo
+                </h2>
+                <p class=" w-11/12 md:w-5/12 font-medium text-white my-4">
+                    Descrição
+                </p>
+                <div class="flex my-4">
+                    <a href="#">
+                        <button class="flex items-center bg-white py-2 px-5 rounded-md" style='color:black;'>
+                            <ion-icon name="play" class="text-2xl"></ion-icon>
+                            <span class="ml-3 font-medium " >
+                                Play
+                            </span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+         <section class='bg-primary_black flex justify-center py-10'>
+        <div class="p-8 w-10/12 relative" >
+                       <h2 class="text-gray-200 text-2xl font-medium">
+                Novos:
+           </h2>
+
+            <div class="carousel-container relative">
+
+                <div class="carousel-viewport overflow-hidden">
+
+                    <div class="carousel-track flex transition-transform duration-500 ease-in-out">
+
+                        {% for serie in lista_series_recentes %}
+
+                        <div class="carousel-card flex-shrink-0 w-1/4 p-2">
+                            <a href="{% url 'serie:detalhesserie' serie.id %}" class="block h-full">
+                                <div class="relative h-full overflow-hidden rounded-md cursor-pointer">
+                                    <img src="{{ serie.thumb.url }}" class="w-full h-full object-cover">
+                                    <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white text-lg p-2">
+                                        {{ serie.titulo }}
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        {% endfor %}
+                        </div>
+                    </div>
+
+                    <button class="carousel-prev absolute top-1/2 left-0 transform -translate-y-1/2 text-white text-5xl z-10 p-4 opacity-50 hover:opacity-100 transition-opacity">‹</button>
+                    <button class="carousel-next absolute top-1/2 right-0 transform -translate-y-1/2 text-white text-5xl z-10 p-4 opacity-50 hover:opacity-100 transition-opacity">›</button>
+
+
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <section class='bg-primary_black flex justify-center py-10'>
+        <div class="p-8 w-10/12 relative" >
+        <h2 class="text-gray-200 text-2xl font-medium">
+            Populares no momento:
+        </h2>
+
+        <div class="carousel-container relative">
+            <div class="carousel-viewport overflow-hidden">
+                <div class="carousel-track flex transition-transform duration-500 ease-in-out">
+
+                    {% for serie in lista_series_emalta %}
+
+                    <div class="carousel-card flex-shrink-0 w-1/4 p-2">
+                        <a href="{% url 'serie:detalhesserie' serie.id %}" class="block h-full">
+                            <div class="relative h-full overflow-hidden rounded-md cursor-pointer">
+                                <img src="{{ serie.thumb.url }}" class="w-full h-full object-cover">
+                                <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white text-lg p-2">
+                                    {{ serie.titulo }}
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <button class="carousel-prev absolute top-1/2 left-0 transform -translate-y-1/2 text-white text-5xl z-10 p-4 opacity-50 hover:opacity-100 transition-opacity">‹</button>
+            <button class="carousel-next absolute top-1/2 right-0 transform -translate-y-1/2 text-white text-5xl z-10 p-4 opacity-50 hover:opacity-100 transition-opacity">›</button>
+        </div>
+    </div>
+</section>
+
+
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="py-11 text-white">
 
         <h1>Tela de Séries</h1>
