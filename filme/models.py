@@ -34,8 +34,10 @@ class Filme(models.Model):
     thumb = models.ImageField(upload_to='thumb_filmes')  # campo de imagem;
     descricao = models.TextField(max_length=1000)  # Bloco de texto
     categoria = models.CharField(max_length=100, choices=LISTA_CATEGORIAS)
-    visualizacoes = models.IntegerField(default=0) 
+    video = models.URLField(blank=True, null=True)
+    visualizacoes = models.IntegerField(default=0)
     data_criacao = models.DateTimeField(default=timezone.now)
+
 
 # função padrão para formato de string
     def __str__(self):  # vai retornar uma instancia da classe filme do proprio filme
