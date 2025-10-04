@@ -17,6 +17,7 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="{% static 'images/android-chrome-512x512.png' %}" type="image/x-icon">
 
+
     {% block head %}
     {% endblock %}
 
@@ -26,15 +27,36 @@
   {% include 'navbar.html' %}
   {% block content %}
   {% endblock %}
+  {% include 'footer.html' %}
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
+
   <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Esta função inicializa um carrossel.
-    // Ela será chamada para cada carrossel que você tiver na página.
-    const initCarousel = (carouselElement) => {
+        const nav = document.querySelector('nav')
+
+        document.addEventListener("scroll",e=>{
+            if(scrollY>100){
+                if(scrollY>window.innerHeight){
+                nav.classList.add('invisible')
+            }else{
+                nav.classList.add('bg-gray-900')
+                nav.classList.remove('invisible')
+            }
+            }else{
+                nav.classList.remove('bg-gray-900')
+                nav.classList.remove('invisible')
+            }
+        })
+
+
+
+    //Script dos cards e botoes
+        document.addEventListener('DOMContentLoaded', function() {
+        // Esta função inicializa um carrossel.
+        // Ela será chamada para cada carrossel que você tiver na página.
+        const initCarousel = (carouselElement) => {
         const track = carouselElement.querySelector('.carousel-track');
         const cards = carouselElement.querySelectorAll('.carousel-card');
         const prevButton = carouselElement.querySelector('.carousel-prev');
@@ -80,14 +102,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Inicializa o estado dos botões
         updateButtons();
-    };
+        };
 
-    // Encontra TODOS os carrosséis na página e inicializa cada um deles
-    const allCarousels = document.querySelectorAll('.carousel-container');
-    allCarousels.forEach(carousel => {
+        // Encontra TODOS os carrosséis na página e inicializa cada um deles
+        const allCarousels = document.querySelectorAll('.carousel-container');
+        allCarousels.forEach(carousel => {
         initCarousel(carousel);
-    });
-});
+        });
+        });
 </script>
 
 </body>
