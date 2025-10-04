@@ -3,6 +3,7 @@ from django import template
 
 register = template.Library()
 
+
 @register.filter
 def get_model_name(obj):
     """Retorna o nome da classe do modelo (ex: 'Filme', 'Serie')."""

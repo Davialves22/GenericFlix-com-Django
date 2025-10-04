@@ -9,7 +9,8 @@
     </title>
 
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
     <!-- Tailwind -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -24,92 +25,92 @@
 </head>
 <body class="bg-black text-white font-primary">
 
-  {% include 'navbar.html' %}
-  {% block content %}
-  {% endblock %}
-  {% include 'footer.html' %}
+{% include 'navbar.html' %}
+{% block content %}
+{% endblock %}
+{% include 'footer.html' %}
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 
-  <script>
-        const nav = document.querySelector('nav')
+<script>
+    const nav = document.querySelector('nav')
 
-        document.addEventListener("scroll",e=>{
-            if(scrollY>100){
-                if(scrollY>window.innerHeight){
-                nav.classList.add('invisible')
-            }else{
-                nav.classList.add('bg-gray-900')
-                nav.classList.remove('invisible')
-            }
-            }else{
-                nav.classList.remove('bg-gray-900')
-                nav.classList.remove('invisible')
-            }
-        })
-
-
-
-    //Script dos cards e botoes
-        document.addEventListener('DOMContentLoaded', function() {
-        // Esta função inicializa um carrossel.
-        // Ela será chamada para cada carrossel que você tiver na página.
-        const initCarousel = (carouselElement) => {
-        const track = carouselElement.querySelector('.carousel-track');
-        const cards = carouselElement.querySelectorAll('.carousel-card');
-        const prevButton = carouselElement.querySelector('.carousel-prev');
-        const nextButton = carouselElement.querySelector('.carousel-next');
-
-        if (!track || cards.length === 0 || !prevButton || !nextButton) {
-            return; // Não faz nada se os elementos essenciais não existirem
+    document.addEventListener("scroll",e=>{
+        if(scrollY>100){
+            if(scrollY>window.innerHeight){
+            nav.classList.add('invisible')
+        }else{
+            nav.classList.add('bg-gray-900')
+            nav.classList.remove('invisible')
         }
+        }else{
+            nav.classList.remove('bg-gray-900')
+            nav.classList.remove('invisible')
+        }
+    })
 
-        const cardsPerPage = 4; // Definimos que queremos 4 cards por página
-        const totalCards = cards.length;
-        let currentIndex = 0;
 
-        // Função para mover a trilha
-        const moveToSlide = (index) => {
-            const cardWidth = cards[0].offsetWidth; // Pega a largura de um card
-            track.style.transform = `translateX(-${index * cardWidth * cardsPerPage}px)`;
-        };
 
-        // Função para atualizar o estado dos botões (habilitado/desabilitado)
-        const updateButtons = () => {
-            prevButton.disabled = currentIndex === 0;
-            nextButton.disabled = (currentIndex + 1) * cardsPerPage >= totalCards;
-        };
+//Script dos cards e botoes
+    document.addEventListener('DOMContentLoaded', function() {
+    // Esta função inicializa um carrossel.
+    // Ela será chamada para cada carrossel que você tiver na página.
+    const initCarousel = (carouselElement) => {
+    const track = carouselElement.querySelector('.carousel-track');
+    const cards = carouselElement.querySelectorAll('.carousel-card');
+    const prevButton = carouselElement.querySelector('.carousel-prev');
+    const nextButton = carouselElement.querySelector('.carousel-next');
 
-        // Evento para o botão "Próximo"
-        nextButton.addEventListener('click', () => {
-            if ((currentIndex + 1) * cardsPerPage < totalCards) {
-                currentIndex++;
-                moveToSlide(currentIndex);
-                updateButtons();
-            }
-        });
+    if (!track || cards.length === 0 || !prevButton || !nextButton) {
+        return; // Não faz nada se os elementos essenciais não existirem
+    }
 
-        // Evento para o botão "Anterior"
-        prevButton.addEventListener('click', () => {
-            if (currentIndex > 0) {
-                currentIndex--;
-                moveToSlide(currentIndex);
-                updateButtons();
-            }
-        });
+    const cardsPerPage = 4; // Definimos que queremos 4 cards por página
+    const totalCards = cards.length;
+    let currentIndex = 0;
 
-        // Inicializa o estado dos botões
-        updateButtons();
-        };
+    // Função para mover a trilha
+    const moveToSlide = (index) => {
+        const cardWidth = cards[0].offsetWidth; // Pega a largura de um card
+        track.style.transform = `translateX(-${index * cardWidth * cardsPerPage}px)`;
+    };
 
-        // Encontra TODOS os carrosséis na página e inicializa cada um deles
-        const allCarousels = document.querySelectorAll('.carousel-container');
-        allCarousels.forEach(carousel => {
-        initCarousel(carousel);
-        });
-        });
+    // Função para atualizar o estado dos botões (habilitado/desabilitado)
+    const updateButtons = () => {
+        prevButton.disabled = currentIndex === 0;
+        nextButton.disabled = (currentIndex + 1) * cardsPerPage >= totalCards;
+    };
+
+    // Evento para o botão "Próximo"
+    nextButton.addEventListener('click', () => {
+        if ((currentIndex + 1) * cardsPerPage < totalCards) {
+            currentIndex++;
+            moveToSlide(currentIndex);
+            updateButtons();
+        }
+    });
+
+    // Evento para o botão "Anterior"
+    prevButton.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            moveToSlide(currentIndex);
+            updateButtons();
+        }
+    });
+
+    // Inicializa o estado dos botões
+    updateButtons();
+    };
+
+    // Encontra TODOS os carrosséis na página e inicializa cada um deles
+    const allCarousels = document.querySelectorAll('.carousel-container');
+    allCarousels.forEach(carousel => {
+    initCarousel(carousel);
+    });
+    });
 </script>
 
 </body>

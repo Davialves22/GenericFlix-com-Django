@@ -8,7 +8,7 @@ Resultados da Pesquisa GenericFlix
 
 {% block content %}
 <main class='bg-primary_black min-h-screen w-full'>
-    <section class='bg-primary_black min-h-screen flex justify-center py-10'>
+    <section class='bg-primary_black min-h-screen flex justify-center py-10 pt-20'>
         <div class="p-8 w-10/12 relative">
 
             <h2 class="text-gray-200 text-2xl font-medium">
@@ -24,27 +24,33 @@ Resultados da Pesquisa GenericFlix
                 Encontrados {{ resultados|length }} resultados.
             </p>
 
-            <div class="flex flex-wrap items-center min-w-full movie_lis">
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
                 {% for item in resultados %}
 
                 {% with tipo=item|get_model_name %}
-                <div class="m-4 bg-gray-700 overflow-hidden flex-shrink-0 rounded-md cursor-pointer h-64 w-96 relative">
+                <div class="relative overflow-hidden rounded-lg cursor-pointer transform hover:scale-105 transition duration-300 shadow-xl">
 
-                    <a href="{% if tipo == 'Serie' %}{% url 'serie:detalhesserie' item.pk %}{% else %}{% url 'filme:detalhesfilme' item.pk %}{% endif %}">
-                        <img src="{{ item.thumb.url }}" class="object-cover w-full h-full" alt="{{ item.titulo }}">
+                    <a href="{% if tipo == 'Serie' %}{% url 'serie:detalhesserie' item.pk %}{% else %}{% url 'filme:detalhesfilme' item.pk %}{% endif %}"
+                       class="block h-full w-full">
+
+                        <img src="{{ item.thumb.url }}"
+                             class="w-full h-full object-cover aspect-video"
+                             alt="{{ item.titulo }}">
+
+                        <span class="absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-md z-10">
+                            {% if tipo == 'Serie' %}
+                                SÉRIE 📺
+                            {% else %}
+                                FILME 🎬
+                            {% endif %}
+                        </span>
+
+                        <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-70 flex items-end opacity-0 hover:opacity-100 transition duration-300 p-4">
+                            <h3 class="text-white text-lg font-bold">
+                                {{ item.titulo }}
+                            </h3>
+                        </div>
                     </a>
-
-                    <span class="absolute top-0 right-0 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-bl-md">
-                                        {% if tipo == 'Serie' %}
-                                            SÉRIE 📺
-                                        {% else %}
-                                            FILME 🎬
-                                        {% endif %}
-                                    </span>
-
-                    <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-75 text-white p-2">
-                        {{ item.titulo }}
-                    </div>
                 </div>
                 {% endwith %}
                 {% endfor %}
