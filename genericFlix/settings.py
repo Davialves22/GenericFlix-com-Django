@@ -67,7 +67,6 @@ TEMPLATES = [
                 #funções personalizadas - series
                 'serie.novos_context.lista_series_recentes',
                 'serie.novos_context.lista_series_emalta',
-                
                 #funções personalizadas - filmes
                 'filme.novos_context.lista_filmes_recentes',
                 'filme.novos_context.lista_filmes_emalta',

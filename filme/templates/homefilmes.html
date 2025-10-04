@@ -167,41 +167,4 @@ HomeFilmes GenericFlix
 
 
     </main>
-
-
-
-
-
-
-
-
-<div class="py-11 text-white">
-
-    <h1>Tela de Filmes</h1>
-
-    {%for filme in object_list %}
-    <hr>
-    <!--Exibir uma imagem salva do bd-->
-    <img src="{{filme.thumb.url}}" alt="">
-    <a href="{% url 'filme:detalhesfilme' filme.id %}"> <p> {{ filme.titulo }}</p> </a> <!--todos os titulos dos filmes terao uma função na qual todos serao direcionados para a tela de detalhes-->
-    <p> {{ filme.descricao }}</p>
-    {% endfor %}
-</div>
-
-    <div class="py-10">
-        <h1>Novos Filmes:</h1>
-        {{ lista_filmes_recentes }}
-    </div>
-
-   <div class="py-10">
-        <h1>Filmes em Alta:</h1>
-        {{ lista_filmes_emalta }}
-    </div>
-
-
-
-
-
-
-
 {% endblock %}

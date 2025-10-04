@@ -77,16 +77,16 @@ HomeFilmes GenericFlix
 
     <main class='bg-primary_black min-h-screen w-full'>
 
-        <section class="h-screen relative bg-no-repeat pb-8 pl-6 flex items-end bg-cover" style="background-image: url('{}');">
+        <section class="h-screen relative bg-no-repeat pb-8 pl-6 flex items-end bg-cover" style="background-image: url('{{ serie_destaque.thumb.url }}');">
             <div>
                 <h2 class="text-6xl font-semibold text-white my-4">
-                    Titulo
+                    {{ serie_destaque.titulo }}
                 </h2>
                 <p class=" w-11/12 md:w-5/12 font-medium text-white my-4">
-                    Descrição
+                    {{ serie_destaque.descricao|slice:50 }}...
                 </p>
                 <div class="flex my-4">
-                    <a href="#">
+                    <a href="{% url 'serie:detalhesserie' serie_destaque.id %}">
                         <button class="flex items-center bg-white py-2 px-5 rounded-md" style='color:black;'>
                             <ion-icon name="play" class="text-2xl"></ion-icon>
                             <span class="ml-3 font-medium " >
@@ -164,44 +164,6 @@ HomeFilmes GenericFlix
 
 
     </main>
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="py-11 text-white">
-
-        <h1>Tela de Séries</h1>
-
-        {%for serie in object_list %}
-        <hr>
-        <!--Exibir uma imagem salva do bd-->
-        <img src="{{serie.thumb.url}}" alt="">
-        <a href="{% url 'serie:detalhesserie' serie.id %}"> <p> {{ serie.titulo }}</p> </a> <!--todos os titulos dos filmes terao uma função na qual todos serao direcionados para a tela de detalhes-->
-        <p> {{ serie.descricao }}</p>
-        {% endfor %}
-    </div>
-
-
-
-    <div class="py-10">
-        <h1>Novas Séries:</h1>
-        {{ lista_series_recentes }}
-    </div>
-
-   <div class="py-10">
-        <h1>Séries em Alta:</h1>
-        {{ lista_series_emalta }}
-    </div>
-
-
 {% endblock %}
 
 
