@@ -11,86 +11,100 @@ DetalhesSeries GenericFlix
 {% block content %}
 
 
-
-    <main class='bg-primary_black min-h-screen w-full'>
-        <section class="h-screen relative bg-no-repeat pb-8 pl-6 flex bg-black bg-opacity-50 bg-blend-overlay showcase  items-end bg-cover" style="background-image: url('{{ object.thumb.url }}')">
-            <div>
-                <h2 class="text-6xl font-semibold text-white my-4">
-                    {{object.titulo}}
-                </h2>
-                <p class=" w-11/12 md:w-5/12 font-medium text-white my-4">
-                    Sinopse: {{object.descricao|slice:":100"}}...<!--Edições ao texto que será mostrado, no caso,o limite e de 50 caracteres -->
-                </p>
-                <div class="flex my-4">
-                    <a href="{{ object.episodios.first.video }}" target="_blank">
-                        <button class="flex items-center bg-white py-2 px-5 rounded-md" style='color:black;'>
-                            <ion-icon name="play" class="text-2xl"></ion-icon>
-                            <span class="ml-3 font-medium">
+<main class='bg-primary_black min-h-screen w-full'>
+    <section
+            class="h-screen relative bg-no-repeat pb-8 pl-6 flex bg-black bg-opacity-50 bg-blend-overlay showcase  items-end bg-cover"
+            style="background-image: url('{{ object.thumb.url }}')">
+        <div>
+            <h2 class="text-6xl font-semibold text-white my-4">
+                {{object.titulo}}
+            </h2>
+            <p class=" w-11/12 md:w-5/12 font-medium text-white my-4">
+                Sinopse: {{object.descricao|slice:":100"}}...
+                <!--Edições ao texto que será mostrado, no caso,o limite e de 50 caracteres -->
+            </p>
+            <div class="flex my-4">
+                <a href="{{ object.episodios.first.video }}" target="_blank">
+                    <button class="flex items-center bg-white py-2 px-5 rounded-md" style='color:black;'>
+                        <ion-icon name="play" class="text-2xl"></ion-icon>
+                        <span class="ml-3 font-medium">
                                 Play
                             </span>
-                        </button>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section class='bg-primary_black flex justify-center py-10'>
+        <div class="p-8 w-10/12 relative">
+            <h2 class="text-gray-200 text-3xl font-medium">
+                Sinopse:
+            </h2>
+            <div class="flex justify-left  items-center min-w-full  movie_lis">
+                <p class="text-gray-100 text-lg">
+                    {{ object.descricao }}
+                    <br><br>
+                    Visualizações: {{ object.visualizacoes }}
+                </p>
+            </div>
+            <br>
+
+            <!--Lista de EPS-->
+            <div style='margin-top:2rem;margin-bottom:2rem;'>
+                <h2 class="text-gray-200 text-3xl font-medium">
+                    Episódios:
+
+                </h2><br>
+                <h3 class='text-lg'>
+                    {% for episodio in object.episodios.all %}
+                    <a href="{{ episodio.video }}" target="_blank">
+                        <p>Episódio {{ forloop.counter }}: {{ episodio.titulo }}</p>
+                    </a>
+                    {% endfor%}
+                </h3>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!--Lista de series relacionadas-->
+    <section class='bg-primary_black flex justify-center py-10'>
+        <div class="p-8 w-10/12 relative">
+            <h2 class="text-gray-200 text-2xl font-medium">
+                Relacionados:
+            </h2>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+                {% for serie in series_relacionadas %}
+
+                <div class="relative overflow-hidden rounded-lg cursor-pointer transform hover:scale-105 transition duration-300 shadow-xl">
+
+                    <a href="{% url 'serie:detalhesserie' serie.pk %}"
+                       class="block h-full w-full">
+
+                        <img src="{{ serie.thumb.url }}"
+                             class="w-full h-full object-cover aspect-video"
+                             alt="{{ serie.titulo }}">
+
+                        <span class="absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-md z-10">
+                        SÉRIE 📺
+                    </span>
+
+                        <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-70 flex items-end opacity-0 hover:opacity-100 transition duration-300 p-4">
+                            <h3 class="text-white text-lg font-bold">
+                                {{ serie.titulo }}
+                            </h3>
+                        </div>
                     </a>
                 </div>
+                {% endfor %}
             </div>
-        </section>
-        <section class='bg-primary_black flex justify-center py-10'>
-            <div class="p-8 w-10/12 relative" >
-                <h2 class="text-gray-200 text-3xl font-medium">
-                    Sinopse:
-                </h2>
-                <div class="flex justify-left  items-center min-w-full  movie_lis">
-                    <p class="text-gray-100 text-lg">
-                        {{ object.descricao }}
-                        <br><br>
-                        Visualizações: {{ object.visualizacoes }}
-                    </p>
-                </div>
-                <br>
 
-                <!--Lista de EPS-->
-                <div style='margin-top:2rem;margin-bottom:2rem;'>
-                    <h2 class="text-gray-200 text-3xl font-medium">
-                        Episódios:
+        </div>
+    </section>
 
-                    </h2><br>
-                        <h3 class='text-lg'>
-                            {% for episodio in object.episodios.all  %}
-                                <a href="{{ episodio.video }}" target="_blank">
-                                    <p>Episódio {{ forloop.counter }}: {{ episodio.titulo }}</p>
-                                </a>
-                            {% endfor%}
-                        </h3>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!--Lista de series relacionadas-->
-        <section class='bg-primary_black flex justify-center py-10'>
-            <div class="p-8 w-10/12 relative" >
-                <h2 class="text-gray-200 text-2xl font-medium">
-                    Relacionados:
-                </h2>
-
-                <div class="flex flex-wrap items-center min-w-full movie_lis">
-                    {% for serie in series_relacionadas %}
-
-                      <div class="relative m-4 overflow-hidden flex-shrink-0 rounded-md cursor-pointer h-64 w-96">
-                        <a href="{% url 'serie:detalhesserie' serie.id %} ">
-                            <img src="{{ serie.thumb.url }}" class="object-cover w-full h-full " alt="">
-                            <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white text-lg p-2">
-                                {{ serie.titulo }}
-                            </div>
-                        </a>
-                    </div>
-                    {% endfor%}
-                </div>
-
-            </div>
-        </section>
-
-    </main>
+</main>
 {% endblock %}
 
 
