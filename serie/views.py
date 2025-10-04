@@ -1,6 +1,8 @@
 from django.shortcuts import render
+from filme.models import Filme
 from .models import Serie
 from django.views.generic import TemplateView, ListView, DetailView
+from django.db.models import Q
 
 #=========================================================================#
 #class base view
@@ -34,6 +36,11 @@ class Detalhesserie(DetailView):
             series_relacionadas = Serie.objects.filter(categoria=self.get_object().categoria)[0:5] #caso queira controlar as series relacionadas,pode usar [0:3]
             context['series_relacionadas'] = series_relacionadas
             return context
+
+#Função para a barra de pesquisa
+class Pesquisaserie(ListView):
+    template_name = "pesquisa.html"
+    model = Serie  # -> object_list -> lista de itens do modelo
 
 #=========================================================================#
 # Create your views here.

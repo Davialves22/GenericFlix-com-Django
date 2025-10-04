@@ -35,6 +35,12 @@ class Detalhesfilme(DetailView):
         filmes_relacionados = Filme.objects.filter(categoria=self.get_object().categoria)[0:5]  # caso queira controlar os filmes relacionadas, pode usar [0:3]
         context['filmes_relacionados'] = filmes_relacionados
         return context
+    # Função para a barra de pesquisa
+
+
+class Pesquisafilme(ListView):
+    template_name = "pesquisa.html"
+    model = Filme  # -> object_list -> lista de itens do modelo
 
 
 #=========================================================================#
