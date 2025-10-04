@@ -7,9 +7,73 @@
 HomeFilmes GenericFlix
 {%  endblock %}
 
+<!--bloco de estilo-->
+{% block head %}
+<style>
+    /* Adicione isso ao seu arquivo CSS ou dentro de uma tag <style> no seu base.html */
+
+/* Estiliza o container principal do carrossel */
+.carousel-container {
+    width: 100%; /* Garante que o carrossel ocupe o espaço disponível */
+}
+
+/* A "janela" do carrossel. Esconde o que estiver fora dela. */
+.carousel-viewport {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* A trilha que contém todos os cards. */
+.carousel-track {
+    /* A transição suave é aplicada aqui! */
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Cada card individual */
+.carousel-card {
+    /* Garante que o padding não afete o cálculo de 25% da largura */
+    box-sizing: border-box;
+    flex-shrink: 0;
+    width: 25%; /* Mostra 4 cards por vez */
+}
+
+/* Posicionamento e estilo dos botões */
+.carousel-prev, .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #E50914;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-prev {
+    left: -25px; /* Ajuste para posicionar fora da área dos cards */
+}
+
+.carousel-next {
+    right: -25px; /* Ajuste para posicionar fora da área dos cards */
+}
+
+/* Esconde o botão se ele estiver desabilitado (via JS) */
+.carousel-prev:disabled, .carousel-next:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+}
+</style>
+{%  endblock %}
+
+
+
 <!--Bloco de corpo-->
 {% block content %}
-
     <main class='bg-primary_black min-h-screen w-full'>
         <section class="h-screen relative bg-no-repeat pb-8 pl-6 flex items-end bg-cover" style="background-image: url('#');">
             <div>
@@ -32,57 +96,75 @@ HomeFilmes GenericFlix
         </section>
 
 
-     <section class='bg-primary_black flex justify-center py-10'>
-
+        <!--Sessão de novos-->
+        <section class='bg-primary_black flex justify-center py-10'>
             <div class="p-8 w-10/12 relative" >
                 <h2 class="text-gray-200 text-2xl font-medium">
                     Novos:
                 </h2>
-                <div class="wrapper">
 
-                  <!--Sessao 1-->
-                  <section id="section1" class="flex flex-nowrap items-center justify-center space-x-8">
-                    <a href="#section2" class="arrow__btn text-6xl page">‹</a>
-                      {% for filme in lista_filmes_recentes  %}
-                      {% if forloop.counter < 5 %}
-                          <div class="relative m-4 overflow-hidden flex-shrink-0 rounded-md cursor-pointer h-64 w-96">
-                              <a href="{% url 'filme:detalhesfilme' filme.id %}">
-                                  <img src="{{filme.thumb.url}}" class="rounded-md w-full h-full object-cover">
-                                  <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white text-lg p-2">
-                                    {{ filme.titulo }}
-                                </div>
-                              </a>
-                          </div>
-                      {% endif %}
-                      {% endfor %}
-                        <a href="#section2" class="arrow__btn text-6xl">›</a>
-                  </section>
+                <div class="carousel-container relative">
 
-                      <!--Sessao 2/ se a lista 1 tiver mais que 4 itens,entao ira para a lista 2-->
-                    {% if lista_filmes_recentes|length > 4 %}
-                    <section id="section2" class="flex flex-nowrap items-center justify-center">
-                        <a href="#section1" class="arrow__btn text-6xl">‹</a>
-                         {% for filme in lista_filmes_recentes  %}
-                         {% if forloop.counter > 4 %}
-                            <div class="relative m-4 overflow-hidden flex-shrink-0 rounded-md cursor-pointer h-64 w-96">
-                                <a href="{% url 'filme:detalhesfilme' filme.id %}">
-                                    <img src="{{filme.thumb.url}}" class="rounded-md w-full h-full object-cover">
-                                <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white text-lg p-2">
-                                    {{ filme.titulo }}
-                                </div>
+                    <div class="carousel-viewport overflow-hidden">
+
+                        <div class="carousel-track flex transition-transform duration-500 ease-in-out">
+
+                            {% for filme in lista_filmes_recentes %}
+
+                            <div class="carousel-card flex-shrink-0 w-1/4 p-2">
+                                <a href="{% url 'filme:detalhesfilme' filme.id %}" class="block h-full">
+                                    <div class="relative h-full overflow-hidden rounded-md cursor-pointer">
+                                        <img src="{{ filme.thumb.url }}" class="w-full h-full object-cover">
+                                        <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white text-lg p-2">
+                                            {{ filme.titulo }}
+                                        </div>
+                                    </div>
                                 </a>
                             </div>
-                        {% endif %}
-                        {% endfor %}
-                        <a href="#section1" class="arrow__btn text-6xl">›</a>
-                    </section>
-                    {% endif%}
+
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <button class="carousel-prev absolute top-1/2 left-0 transform -translate-y-1/2 text-white text-5xl z-10 p-4 opacity-50 hover:opacity-100 transition-opacity">‹</button>
+                    <button class="carousel-next absolute top-1/2 right-0 transform -translate-y-1/2 text-white text-5xl z-10 p-4 opacity-50 hover:opacity-100 transition-opacity">›</button>
+
 
                 </div>
-
-            </div>
-
         </section>
+
+
+        <!--Sessão de Populares-->
+        <section class='bg-primary_black flex justify-center py-10'>
+            <div class="p-8 w-10/12 relative" >
+                <h2 class="text-gray-200 text-2xl font-medium">
+                    Populares no momento:
+                </h2>
+
+                <div class="carousel-container relative">
+                    <div class="carousel-viewport overflow-hidden">
+                        <div class="carousel-track flex transition-transform duration-500 ease-in-out">
+                            {% for filme in lista_filmes_emalta %}
+                            <div class="carousel-card flex-shrink-0 w-1/4 p-2">
+                                <a href="{% url 'filme:detalhesfilme' filme.id %}" class="block h-full">
+                                    <div class="relative h-full overflow-hidden rounded-md cursor-pointer">
+                                        <img src="{{ filme.thumb.url }}" class="w-full h-full object-cover">
+                                        <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white text-lg p-2">
+                                            {{ filme.titulo }}
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <button class="carousel-prev absolute top-1/2 left-0 transform -translate-y-1/2 text-white text-5xl z-10 p-4 opacity-50 hover:opacity-100 transition-opacity">‹</button>
+                    <button class="carousel-next absolute top-1/2 right-0 transform -translate-y-1/2 text-white text-5xl z-10 p-4 opacity-50 hover:opacity-100 transition-opacity">›</button>
+                </div>
+            </div>
+        </section>
+
 
     </main>
 
@@ -123,6 +205,3 @@ HomeFilmes GenericFlix
 
 
 {% endblock %}
-
-
-

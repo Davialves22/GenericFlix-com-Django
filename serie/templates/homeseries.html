@@ -43,7 +43,7 @@ HomeFilmes GenericFlix
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #E50914;
     border: none;
     border-radius: 50%;
     width: 50px;
@@ -98,21 +98,17 @@ HomeFilmes GenericFlix
             </div>
         </section>
 
-
+        <!--Sessão de novos-->
          <section class='bg-primary_black flex justify-center py-10'>
-        <div class="p-8 w-10/12 relative" >
-                       <h2 class="text-gray-200 text-2xl font-medium">
-                Novos:
-           </h2>
+            <div class="p-8 w-10/12 relative" >
+                <h2 class="text-gray-200 text-2xl font-medium">
+                    Novos:
+                </h2>
 
-            <div class="carousel-container relative">
-
-                <div class="carousel-viewport overflow-hidden">
-
-                    <div class="carousel-track flex transition-transform duration-500 ease-in-out">
-
+                <div class="carousel-container relative">
+                    <div class="carousel-viewport overflow-hidden">
+                        <div class="carousel-track flex transition-transform duration-500 ease-in-out">
                         {% for serie in lista_series_recentes %}
-
                         <div class="carousel-card flex-shrink-0 w-1/4 p-2">
                             <a href="{% url 'serie:detalhesserie' serie.id %}" class="block h-full">
                                 <div class="relative h-full overflow-hidden rounded-md cursor-pointer">
@@ -123,7 +119,6 @@ HomeFilmes GenericFlix
                                 </div>
                             </a>
                         </div>
-
                         {% endfor %}
                         </div>
                     </div>
@@ -132,47 +127,21 @@ HomeFilmes GenericFlix
                     <button class="carousel-next absolute top-1/2 right-0 transform -translate-y-1/2 text-white text-5xl z-10 p-4 opacity-50 hover:opacity-100 transition-opacity">›</button>
 
 
-    </div>
-</section>
+            </div>
+        </section>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <!--Sessão de Populares-->
         <section class='bg-primary_black flex justify-center py-10'>
-        <div class="p-8 w-10/12 relative" >
-        <h2 class="text-gray-200 text-2xl font-medium">
-            Populares no momento:
-        </h2>
+            <div class="p-8 w-10/12 relative" >
+                <h2 class="text-gray-200 text-2xl font-medium">
+                    Populares no momento:
+                </h2>
 
-        <div class="carousel-container relative">
-            <div class="carousel-viewport overflow-hidden">
-                <div class="carousel-track flex transition-transform duration-500 ease-in-out">
-
+            <div class="carousel-container relative">
+                <div class="carousel-viewport overflow-hidden">
+                    <div class="carousel-track flex transition-transform duration-500 ease-in-out">
                     {% for serie in lista_series_emalta %}
-
                     <div class="carousel-card flex-shrink-0 w-1/4 p-2">
                         <a href="{% url 'serie:detalhesserie' serie.id %}" class="block h-full">
                             <div class="relative h-full overflow-hidden rounded-md cursor-pointer">
@@ -187,11 +156,11 @@ HomeFilmes GenericFlix
                 </div>
             </div>
 
-            <button class="carousel-prev absolute top-1/2 left-0 transform -translate-y-1/2 text-white text-5xl z-10 p-4 opacity-50 hover:opacity-100 transition-opacity">‹</button>
-            <button class="carousel-next absolute top-1/2 right-0 transform -translate-y-1/2 text-white text-5xl z-10 p-4 opacity-50 hover:opacity-100 transition-opacity">›</button>
-        </div>
-    </div>
-</section>
+                <button class="carousel-prev absolute top-1/2 left-0 transform -translate-y-1/2 text-white text-5xl z-10 p-4 opacity-50 hover:opacity-100 transition-opacity">‹</button>
+                <button class="carousel-next absolute top-1/2 right-0 transform -translate-y-1/2 text-white text-5xl z-10 p-4 opacity-50 hover:opacity-100 transition-opacity">›</button>
+                </div>
+            </div>
+        </section>
 
 
     </main>
