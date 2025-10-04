@@ -3,34 +3,38 @@
 {% load custom_filters %}
 
 {% block titulo %}
-    Resultados da Pesquisa GenericFlix
+Resultados da Pesquisa GenericFlix
 {% endblock %}
 
 {% block content %}
-    <main class='bg-primary_black min-h-screen w-full'>
-        <section class='bg-primary_black min-h-screen flex justify-center py-10'>
-            <div class="p-8 w-10/12 relative" >
+<main class='bg-primary_black min-h-screen w-full'>
+    <section class='bg-primary_black min-h-screen flex justify-center py-10'>
+        <div class="p-8 w-10/12 relative">
 
-                <h2 class="text-gray-200 text-2xl font-medium">
-                    Resultados da Busca para: {{ termo_pesquisa }}
-                </h2>
+            <h2 class="text-gray-200 text-2xl font-medium">
+                {% if termo_pesquisa %}
+                Resultados da Busca para: "{{ termo_pesquisa }}"
+                {% else %}
+                Catálogo Completo (Filmes e Séries) 🍿
+                {% endif %}
+            </h2>
 
-                {% if resultados %}
-                    <p class="text-gray-400 mb-6">
-                        Encontrados {{ resultados|length }} resultados.
-                    </p>
+            {% if resultados %}
+            <p class="text-gray-400 mb-6">
+                Encontrados {{ resultados|length }} resultados.
+            </p>
 
-                    <div class="flex flex-wrap items-center min-w-full movie_lis">
-                        {% for item in resultados %}
+            <div class="flex flex-wrap items-center min-w-full movie_lis">
+                {% for item in resultados %}
 
-                            {% with tipo=item|get_model_name %}
-                                <div class="m-4 bg-gray-700 overflow-hidden flex-shrink-0 rounded-md cursor-pointer h-64 w-96 relative">
+                {% with tipo=item|get_model_name %}
+                <div class="m-4 bg-gray-700 overflow-hidden flex-shrink-0 rounded-md cursor-pointer h-64 w-96 relative">
 
-                                    <a href="{% if tipo == 'Serie' %}{% url 'serie:detalhesserie' item.pk %}{% else %}{% url 'filme:detalhesfilme' item.pk %}{% endif %}">
-                                        <img src="{{ item.thumb.url }}" class="object-cover w-full h-full" alt="{{ item.titulo }}">
-                                    </a>
+                    <a href="{% if tipo == 'Serie' %}{% url 'serie:detalhesserie' item.pk %}{% else %}{% url 'filme:detalhesfilme' item.pk %}{% endif %}">
+                        <img src="{{ item.thumb.url }}" class="object-cover w-full h-full" alt="{{ item.titulo }}">
+                    </a>
 
-                                    <span class="absolute top-0 right-0 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-bl-md">
+                    <span class="absolute top-0 right-0 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-bl-md">
                                         {% if tipo == 'Serie' %}
                                             SÉRIE 📺
                                         {% else %}
@@ -38,26 +42,26 @@
                                         {% endif %}
                                     </span>
 
-                                    <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-75 text-white p-2">
-                                        {{ item.titulo }}
-                                    </div>
-                                </div>
-                            {% endwith %}
-                        {% endfor %}
+                    <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-75 text-white p-2">
+                        {{ item.titulo }}
                     </div>
-                {% else %}
-                    <div class="mt-8 text-center">
-                        <p class="text-gray-400 text-lg">
-                            Desculpe, não encontramos filmes ou séries para **"{{ termo_pesquisa }}"**.
-                        </p>
-                        <p class="text-gray-500 mt-2">
-                            Tente refinar sua busca.
-                        </p>
-                    </div>
-                {% endif %}
-
+                </div>
+                {% endwith %}
+                {% endfor %}
             </div>
-        </section>
-    </main>
+            {% else %}
+            <div class="mt-8 text-center">
+                <p class="text-gray-400 text-lg">
+                    Desculpe, não encontramos filmes ou séries para **"{{ termo_pesquisa }}"**.
+                </p>
+                <p class="text-gray-500 mt-2">
+                    Tente refinar sua busca.
+                </p>
+            </div>
+            {% endif %}
+
+        </div>
+    </section>
+</main>
 
 {% endblock %}

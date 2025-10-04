@@ -24,3 +24,8 @@ python manage.py makemigrations > cria a estrutura de migração
 sempre que fizer alguma mudança tem que rodar os dois codigos
 
 criar um super user > python manage.py createsuperuser
+
+Para formatar automaticamente um arquivo ou bloco de código:
+
+No Windows/Linux: Ctrl+Alt+L
+
