@@ -1,37 +1,51 @@
 {% load static %}
-<nav class="w-full flex justify-between items-center py-3 px-4 fixed z-50">
-    <!--Imagem-->
-    <div class="w-6/12">
-        <a href="/">
-            <img class="w-3/12" src="{% static 'images/genericlogo.png' %}" alt="">
+<nav id="main-nav" class="w-full flex justify-between items-center py-4 px-8 fixed z-50 bg-black bg-opacity-70 transition-all duration-300 ease-in-out">
+
+    <div class="flex items-center space-x-8">
+
+        <a href="/" class="flex-shrink-0">
+            <img class="w-full h-auto max-w-[120px]" src="{% static 'images/genericlogo.png' %}" alt="GenericFlix Logo">
         </a>
+
+        <div class="hidden sm:flex space-x-6 text-sm">
+            <a href="/" class="text-white font-bold text-base hover:text-red-500 transition-colors duration-200">
+                Início
+            </a>
+
+            <a href="{% url 'serie:homeseries' %}"
+               class="text-gray-300 text-base font-medium tracking-wide hover:text-white transition-colors duration-200 hover:border-b-2 hover:border-red-600 pb-1">
+                Séries
+            </a>
+
+            <a href="{% url 'filme:homefilmes' %}"
+               class="text-gray-300 text-base font-medium tracking-wide hover:text-white transition-colors duration-200 hover:border-b-2 hover:border-red-600 pb-1">
+                Filmes
+            </a>
+        </div>
     </div>
 
-    <div class="w-6/12 flex flex-nowrap justify-end">
-        <div class="mr-2">
+    <div class="flex items-center space-x-4">
 
-            <form method="get" action="{% url 'pesquisa_unificada' %}">
+        <div class="relative group">
+            <form method="get" action="{% url 'pesquisa_unificada' %}" class="flex items-center">
                 <input type="text"
-                       class="py-1 px-2 bg-white text-black rounded-md"
+                       class="py-1 px-3 bg-gray-800 text-white placeholder-gray-500 rounded-md focus:ring-2 focus:ring-red-600 focus:bg-gray-900 transition-all duration-300 w-24 sm:w-40"
                        name="q"
-                       placeholder="Pesquisar...">
-                <input type="submit" value="">
+                       placeholder="Pesquisar..."
+                >
+                <input type="submit" value="" hidden>
             </form>
-
         </div>
 
-        <div class="mr-2">
-            <a href="#">
-                <button class="bg-red-600 text-white rounded-md py-1 px-3 " style="border-radius: 10px">Login</button>
-            </a>
-        </div>
+        <a href="#">
+            <button class="bg-red-600 hover:bg-red-700 text-white font-medium py-1 px-3 rounded-md transition-colors duration-200">
+                Login
+            </button>
+        </a>
 
-        <div class="mr-2">
-            <a href="#">
-                <button class="bg-red-600 rounded-lg text-white py-1 px-3 " style="border-radius: 10px">Editar Perfil
-                </button>
-            </a>
-        </div>
+        <a href="#" class="text-white hover:text-red-600 transition-colors duration-200 hidden sm:block">
+            <ion-icon name="person-circle" class="text-3xl"></ion-icon>
+        </a>
     </div>
 
 </nav>
