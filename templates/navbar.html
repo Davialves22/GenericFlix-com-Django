@@ -10,8 +10,11 @@
     <div class="w-6/12 flex flex-nowrap justify-end">
         <div class="mr-2">
 
-            <form method="get" action="{% url 'serie:pesquisaserie' %}">
-                <input type="text" class="py-1 px-2 bg-white text-black rounded-md" name="query" placeholder="Pesquisar...">
+            <form method="get" action="{% url 'pesquisa_unificada' %}">
+                <input type="text"
+                       class="py-1 px-2 bg-white text-black rounded-md"
+                       name="q"
+                       placeholder="Pesquisar...">
                 <input type="submit" value="">
             </form>
 

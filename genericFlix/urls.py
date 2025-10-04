@@ -18,9 +18,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from genericFlix.views import PesquisaUnificada
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    # AQUI ESTÁ A URL UNIFICADA - SEM PREFIXO DE APP
+    path('pesquisa/', PesquisaUnificada.as_view(), name='pesquisa_unificada'),
+
     # Filmes
     path('', include(('filme.urls', 'filme'), namespace='filme')),
 
