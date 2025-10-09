@@ -31,7 +31,7 @@ class Detalhesserie(LoginRequiredMixin,DetailView):
         serie.save()
 
         usuario = request.user
-        usuario.filmes_vistos.add(serie)
+        usuario.series_vistas.add(serie)
 
         return super().get(request, *args, **kwargs)  # redireciona o usuario para a url final
 
