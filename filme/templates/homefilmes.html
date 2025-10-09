@@ -167,5 +167,43 @@ HomeFilmes GenericFlix
         </section>
 
 
+
+           <!--Sessão de novos-->
+        <section class='bg-primary_black flex justify-center py-10'>
+            <div class="p-8 w-10/12 relative" >
+                <h2 class="text-gray-200 text-2xl font-medium">
+                    Vistos por voce:
+                </h2>
+
+                <div class="carousel-container relative">
+
+                    <div class="carousel-viewport overflow-hidden">
+
+                        <div class="carousel-track flex transition-transform duration-500 ease-in-out">
+
+                            {% for filme in request.user.filmes_vistos.all %}
+
+                            <div class="carousel-card flex-shrink-0 w-1/4 p-2">
+                                <a href="{% url 'filme:detalhesfilme' filme.id %}" class="block h-full">
+                                    <div class="relative h-full overflow-hidden rounded-md cursor-pointer">
+                                        <img src="{{ filme.thumb.url }}" class="w-full h-full object-cover">
+                                        <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white text-lg p-2">
+                                            {{ filme.titulo }}
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <button class="carousel-prev absolute top-1/2 left-0 transform -translate-y-1/2 text-white text-5xl z-10 p-4 opacity-50 hover:opacity-100 transition-opacity">‹</button>
+                    <button class="carousel-next absolute top-1/2 right-0 transform -translate-y-1/2 text-white text-5xl z-10 p-4 opacity-50 hover:opacity-100 transition-opacity">›</button>
+
+
+                </div>
+        </section>
+
     </main>
 {% endblock %}
