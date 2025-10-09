@@ -2,16 +2,20 @@
 {% load static %}
 
 
-<!--bloco do titulo-->
 {% block titulo %}
-
 DetalhesFilmes GenericFlix
-{%  endblock %}
+{% endblock %}
 
-<!--Bloco de corpo-->
 {% block content %}
 
-
+<div id="videoModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center" style="display: none; z-index: 9999;">
+    <div class="bg-black p-4 rounded-lg shadow-xl w-11/12 md:w-3/4 lg:w-1/2 relative">
+        <button id="closeModal" class="absolute top-2 right-4 text-white text-3xl font-bold">&times;</button>
+        <video id="videoPlayer" width="100%" controls autoplay poster="{{ object.thumb.url }}">
+            Seu navegador não suporta a tag de vídeo.
+        </video>
+    </div>
+</div>
 <main class='bg-primary_black min-h-screen w-full'>
     <section
             class="h-screen relative bg-no-repeat pb-8 pl-6 flex bg-black bg-opacity-50 bg-blend-overlay showcase items-end bg-cover"
@@ -24,14 +28,12 @@ DetalhesFilmes GenericFlix
                 Sinopse: {{object.descricao|slice:":100"}}...
             </p>
             <div class="flex my-4">
-                <a href="{{ object.video }}">
-                    <button class="flex items-center bg-white py-2 px-5 rounded-md" style='color:black;'>
-                        <ion-icon name="play" class="text-2xl"></ion-icon>
-                        <span class="ml-3 font-medium">
-                                Play
-                            </span>
-                    </button>
-                </a>
+                <button class="flex items-center bg-white py-2 px-5 rounded-md play-button" style='color:black;' data-video-url="{{ object.video }}">
+                    <ion-icon name="play" class="text-2xl"></ion-icon>
+                    <span class="ml-3 font-medium">
+                        Play
+                    </span>
+                </button>
             </div>
         </div>
     </section>
@@ -51,7 +53,6 @@ DetalhesFilmes GenericFlix
         </div>
     </section>
 
-    <!--Lista de filmes relacionados-->
     <section class='bg-primary_black flex justify-center py-10'>
         <div class="p-8 w-10/12 relative">
             <h2 class="text-gray-200 text-2xl font-medium">
@@ -60,15 +61,10 @@ DetalhesFilmes GenericFlix
 
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
                 {% for filme in filmes_relacionados %}
-
                 <div class="relative overflow-hidden rounded-lg cursor-pointer transform hover:scale-105 transition duration-300 shadow-xl">
-
                     <a href="{% url 'filme:detalhesfilme' filme.pk %}" class="block h-full w-full">
-
                         <img src="{{ filme.thumb.url }}" class="w-full h-full object-cover aspect-video"
                              alt="{{ filme.titulo }}">
-
-
                         <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-70 flex items-end opacity-0 hover:opacity-100 transition duration-300 p-4">
                             <h3 class="text-white text-lg font-bold">
                                 {{ filme.titulo }}
@@ -82,4 +78,47 @@ DetalhesFilmes GenericFlix
     </section>
 
 </main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Pega os elementos do DOM
+        const videoModal = document.getElementById('videoModal');
+        const videoPlayer = document.getElementById('videoPlayer');
+        const closeModalButton = document.getElementById('closeModal');
+        const playButtons = document.querySelectorAll('.play-button');
+
+        // Função para abrir o modal e tocar o vídeo
+        function openModal(videoUrl) {
+            videoPlayer.src = videoUrl;
+            videoModal.style.display = 'flex'; // Mostra o modal
+            videoPlayer.play(); // Inicia o vídeo automaticamente
+        }
+
+        // Função para fechar o modal
+        function closeModal() {
+            videoModal.style.display = 'none'; // Esconde o modal
+            videoPlayer.pause(); // Pausa o vídeo
+            videoPlayer.src = ''; // Limpa a URL para parar o download
+        }
+
+        // Adiciona o evento de clique para cada botão de play
+        playButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const videoUrl = this.getAttribute('data-video-url');
+                openModal(videoUrl);
+            });
+        });
+
+        // Adiciona o evento para o botão de fechar
+        closeModalButton.addEventListener('click', closeModal);
+
+        // Opcional: fecha o modal se o usuário clicar fora do vídeo
+        videoModal.addEventListener('click', function (event) {
+            if (event.target === videoModal) {
+                closeModal();
+            }
+        });
+    });
+</script>
+
 {% endblock %}
