@@ -1,12 +1,12 @@
 # [SeuAppPrincipal]/views.py
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
 from django.db.models import Q
 from serie.models import Serie
 from filme.models import Filme
 
 
-class PesquisaUnificada(ListView):
+class PesquisaUnificada(LoginRequiredMixin,ListView):
     template_name = "pesquisa.html"
     model = None
     context_object_name = 'resultados'

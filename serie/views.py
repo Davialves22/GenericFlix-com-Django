@@ -3,7 +3,7 @@ from filme.models import Filme
 from .models import Serie
 from django.views.generic import TemplateView, ListView, DetailView
 from django.db.models import Q
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # =========================================================================#
 # class base view
@@ -12,12 +12,12 @@ class Homepage(TemplateView):  # vai mostrar a view
 
 
 # series
-class Homeserie(ListView):
+class Homeserie(LoginRequiredMixin,ListView):
     template_name = "homeseries.html"
     model = Serie  # -> object_list -> lista de itens do modelo
 
 
-class Detalhesserie(DetailView):
+class Detalhesserie(LoginRequiredMixin,DetailView):
     template_name = "detalhesserie.html"
     model = Serie  # -> 1 item do modelo
 
@@ -29,6 +29,10 @@ class Detalhesserie(DetailView):
         serie.visualizacoes += 1
         # salvar
         serie.save()
+
+        usuario = request.user
+        usuario.filmes_vistos.add(serie)
+
         return super().get(request, *args, **kwargs)  # redireciona o usuario para a url final
 
     # função que ira filtrar minhas series por categoria e relacionar
@@ -43,7 +47,7 @@ class Detalhesserie(DetailView):
 
 
 # Função para a barra de pesquisa
-class Pesquisaserie(ListView):
+class Pesquisaserie(LoginRequiredMixin,ListView):
     template_name = "pesquisa.html"
     model = Serie  # -> object_list -> lista de itens do modelo
 

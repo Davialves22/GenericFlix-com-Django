@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from .models import Filme
 from django.views.generic import TemplateView, ListView, DetailView
@@ -9,11 +10,11 @@ class Homepage(TemplateView): #vai mostrar a view
     template_name = 'homepage.html'
 
 #filmes
-class Homefilmes(ListView):
+class Homefilmes(LoginRequiredMixin,ListView):
         template_name = "homefilmes.html"
         model = Filme #-> object_list -> lista de itens do modelo
 
-class Detalhesfilme(DetailView):
+class Detalhesfilme(LoginRequiredMixin,DetailView):
     template_name = "detalhesfilme.html"
     model = Filme # -> 1 item do modelo
 
@@ -42,7 +43,7 @@ class Detalhesfilme(DetailView):
     # Função para a barra de pesquisa
 
 
-class Pesquisafilme(ListView):
+class Pesquisafilme(LoginRequiredMixin,ListView):
     template_name = "pesquisa.html"
     model = Filme  # -> object_list -> lista de itens do modelo
 

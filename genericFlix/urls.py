@@ -31,7 +31,9 @@ urlpatterns = [
 
     # Séries
     path('series/', include(('serie.urls', 'serie'), namespace='serie')),
-] 
+
+    path('usuarios/', include(('usuario.urls', 'usuario'), namespace='usuario')),
+]
 
 urlpatterns  += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns  += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
