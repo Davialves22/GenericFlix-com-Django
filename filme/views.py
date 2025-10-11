@@ -1,22 +1,37 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
+from django.urls import reverse_lazy
+
+from usuario.forms import FormHomepage
 from .models import Filme
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import TemplateView, ListView, DetailView, FormView
 from usuario.models import Usuario
 
 
 # =========================================================================#
 # class base view
-class Homepage(TemplateView):  # vai mostrar a view
+class Homepage(FormView):
     template_name = 'homepage.html'
+    form_class = FormHomepage
+    success_url = reverse_lazy('usuario:login')  # valor padrão (evita erro 405)
 
     def get(self, request, *args, **kwargs):
-        if request.user.is_authenticated:  # usuario esta autenticado
-            # redireciona pra home
+        # se já está logado, vai direto para home de filmes
+        if request.user.is_authenticated:
             return redirect('filme:homefilmes')
-        else:
-            return super().get(request, *args, **kwargs)  # redireciona para a homepage
+        return super().get(request, *args, **kwargs)
 
+    def form_valid(self, form):
+        # obtém o e-mail digitado
+        email = form.cleaned_data.get('email')
+
+        # verifica se já existe um usuário com esse e-mail
+        if Usuario.objects.filter(email=email).exists():
+            # redireciona para login
+            return redirect('usuario:login')
+        else:
+            # redireciona para criar conta
+            return redirect('usuario:criarconta')
 
 # filmes
 class Homefilmes(LoginRequiredMixin, ListView):

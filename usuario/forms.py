@@ -1,9 +1,12 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.views.generic import TemplateView
 
 from usuario.models import Usuario
 
+class FormHomepage(forms.Form):
+    email = forms.EmailField(label = False)
 
 # criando o formulario de usuario padrao e personalizado
 class CriarContaForm(UserCreationForm):
@@ -15,3 +18,4 @@ class CriarContaForm(UserCreationForm):
 
         #campos exibidos no formulario
         fields = ('username', 'email', 'password1', 'password2')
+
