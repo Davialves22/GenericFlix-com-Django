@@ -67,7 +67,7 @@
 
         <!-- Ícone de perfil -->
         {% if user.is_authenticated %}
-        <a href="#" class="text-white hover:text-red-600 transition-colors duration-200 hidden sm:block">
+        <a href="{% url 'usuario:editarperfil' %}" class="text-white hover:text-red-600 transition-colors duration-200 hidden sm:block">
             <ion-icon name="person-circle" class="text-3xl"></ion-icon>
         </a>
         {% endif %}
