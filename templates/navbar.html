@@ -1,30 +1,34 @@
 {% load static %}
 
 <nav id="main-nav"
-     class="w-full flex justify-between items-center py-4 px-8 fixed z-50 bg-black bg-opacity-70 transition-all duration-300 ease-in-out">
+     class="w-full flex justify-between items-center py-3 px-6 fixed top-0 z-50
+            bg-black bg-opacity-75 backdrop-blur-sm border-b border-gray-800
+            transition-all duration-300 ease-in-out shadow-md">
 
     <!-- LADO ESQUERDO: logo + links -->
-    <div class="flex items-center space-x-8">
+    <div class="flex items-center space-x-6">
 
         <!-- Logo -->
         <a href="/" class="flex-shrink-0">
-            <img class="w-full h-auto max-w-[120px]" src="{% static 'images/genericlogo.png' %}" alt="GenericFlix Logo">
+            <img class="h-5 w-auto opacity-90 hover:opacity-100 transition duration-300"
+                 src="{% static 'images/genericlogo.png' %}"
+                 alt="GenericFlix Logo">
         </a>
 
         {% if user.is_authenticated %}
         <!-- Links principais -->
-        <div class="hidden sm:flex space-x-6 text-sm">
-            <a href="/" class="text-white font-bold text-base hover:text-red-500 transition-colors duration-200">
+        <div class="hidden sm:flex space-x-5 text-sm">
+            <a href="/" class="text-white font-semibold text-sm hover:text-red-500 transition-colors duration-200">
                 Início
             </a>
 
             <a href="{% url 'serie:homeseries' %}"
-               class="text-gray-300 text-base font-medium tracking-wide hover:text-white transition-colors duration-200 hover:border-b-2 hover:border-red-600 pb-1">
+               class="text-gray-300 text-sm font-medium tracking-wide hover:text-white transition-colors duration-200 hover:border-b-2 hover:border-red-600 pb-0.5">
                 Séries
             </a>
 
             <a href="{% url 'filme:homefilmes' %}"
-               class="text-gray-300 text-base font-medium tracking-wide hover:text-white transition-colors duration-200 hover:border-b-2 hover:border-red-600 pb-1">
+               class="text-gray-300 text-sm font-medium tracking-wide hover:text-white transition-colors duration-200 hover:border-b-2 hover:border-red-600 pb-0.5">
                 Filmes
             </a>
         </div>
@@ -32,14 +36,16 @@
     </div>
 
     <!-- LADO DIREITO: busca + login/logout + perfil -->
-    <div class="flex items-center space-x-4 ml-auto">
+    <div class="flex items-center space-x-3 ml-auto">
 
         {% if user.is_authenticated %}
         <!-- Campo de busca -->
         <div class="relative group">
             <form method="get" action="{% url 'pesquisa_unificada' %}" class="flex items-center">
                 <input type="text"
-                       class="py-1 px-3 bg-gray-800 text-white placeholder-gray-500 rounded-md focus:ring-2 focus:ring-red-600 focus:bg-gray-900 transition-all duration-300 w-24 sm:w-40"
+                       class="py-1 px-3 bg-gray-800/80 text-white placeholder-gray-500 rounded-md
+                              focus:ring-2 focus:ring-red-600 focus:bg-gray-900 transition-all duration-300
+                              w-28 sm:w-40 text-sm"
                        name="q"
                        placeholder="Pesquisar...">
                 <input type="submit" value="" hidden>
@@ -52,14 +58,14 @@
         <form method="post" action="{% url 'usuario:logout' %}">
             {% csrf_token %}
             <button type="submit"
-                    class="bg-red-600 hover:bg-red-700 text-white font-medium py-1 px-3 rounded-md transition-colors duration-200">
+                    class="bg-red-600 hover:bg-red-700 text-white text-sm font-medium py-1 px-3 rounded-md transition-colors duration-200" style="border-radius:5px">
                 Sair
             </button>
         </form>
         {% else %}
         <a href="{% url 'usuario:login' %}">
             <button
-                    class="bg-red-600 hover:bg-red-700 text-white font-medium py-1 px-3 rounded-md transition-colors duration-200">
+                    class="bg-red-600 hover:bg-red-700 text-white text-sm font-medium py-1 px-3 rounded-md transition-colors duration-200"  style="border-radius:5px">
                 Login
             </button>
         </a>
@@ -67,8 +73,9 @@
 
         <!-- Ícone de perfil -->
         {% if user.is_authenticated %}
-        <a href="{% url 'usuario:editarperfil' %}" class="text-white hover:text-red-600 transition-colors duration-200 hidden sm:block">
-            <ion-icon name="person-circle" class="text-3xl"></ion-icon>
+        <a href="{% url 'usuario:editarperfil' %}"
+           class="text-white hover:text-red-600 transition-colors duration-200 hidden sm:block">
+            <ion-icon name="person-circle" class="text-2xl"></ion-icon>
         </a>
         {% endif %}
     </div>
