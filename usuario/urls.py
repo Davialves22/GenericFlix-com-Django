@@ -16,7 +16,7 @@ urlpatterns = [
     # usuarios
     path('login/', auth_view.LoginView.as_view(template_name = "login.html"), name='login'),  # pk -> primary key
     path('logout/', auth_view.LogoutView.as_view(template_name = "logout.html"), name='logout'),  # pk -> primary key
-    path('editarperfil/', Paginaperfil.as_view(), name='editarperfil'),  # pk -> primary key
+    path('editarperfil/<int:pk>', Paginaperfil.as_view(), name='editarperfil'),  # pk -> primary key
     path('criarconta/', Criarconta.as_view(), name='criarconta'),  # pk -> primary key
 
     # path('', homepage), #HomePage do site

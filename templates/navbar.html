@@ -73,10 +73,11 @@
 
         <!-- Ícone de perfil -->
         {% if user.is_authenticated %}
-        <a href="{% url 'usuario:editarperfil' %}"
+        <a href="{% url 'usuario:editarperfil' user.id %}"
            class="text-white hover:text-red-600 transition-colors duration-200 hidden sm:block">
             <ion-icon name="person-circle" class="text-2xl"></ion-icon>
         </a>
         {% endif %}
+
     </div>
 </nav>
